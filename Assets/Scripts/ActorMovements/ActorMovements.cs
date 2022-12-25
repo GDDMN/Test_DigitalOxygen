@@ -1,16 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class ActorMovements : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _actorBody;
     [SerializeField] private Animator _animationController;
 
     [SerializeField] private AnimationCurve _jumpCurve;
     [SerializeField] private float _walkSpeed;
 
-    [HideInInspector] public bool OnGround { get; private set; }
+    [SerializeField] private float _jumpSpeed;
+    [SerializeField] private float _jumpForce;
+
+    private bool _onGround;
 
     private void Awake()
     {
@@ -19,32 +22,45 @@ public class ActorMovements : MonoBehaviour
 
     public void Run(float direction)
     {
-        if (!OnGround)
-            return;
 
-        _actorBody.velocity = new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
+        Vector3 startPosition = transform.position;
+        transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
-
-        if (direction != 0)
-            _animationController.SetBool("Run", true);
-        else
-            _animationController.SetBool("Run", false);
     }
 
     private void Rotate(float direction)
     {
         if((int)direction != 0)
-            _actorBody.transform.rotation = Quaternion.Euler(0.0f, 90 * (int)direction, 0.0f);
+            transform.rotation = Quaternion.Euler(0.0f, 90 * (int)direction, 0.0f);
     }
 
-    public void Jump()
+    public void Jump(float direction)
     {
-        if (!OnGround)
+        if (!_onGround)
             return;
 
-        OnGround = false;
+        _onGround = false;
+        StartCoroutine(JumpAnimation(direction));
+    }
 
-        Debug.Log("Jump");
+    private IEnumerator JumpAnimation(float direction)
+    {
+        float progress = 0.0f;
+        float horizontalMove = 0.0f;
+        Vector3 startPosition = transform.position;
+
+        while (progress < 1)
+        {
+            progress += _jumpSpeed * Time.deltaTime;
+            float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce;
+            
+
+            float verticalMove = startPosition.y * jumpEvaluation;
+            horizontalMove += (direction * _walkSpeed * Time.deltaTime);
+
+            transform.position = startPosition + new Vector3(horizontalMove, verticalMove, 0.0f);
+            yield return null;
+        }
     }
 
     public void Hurt()
@@ -54,12 +70,12 @@ public class ActorMovements : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Attack");
+       
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!OnGround)
-            OnGround = true;
+        if (!_onGround)
+            _onGround = true;
     }
 }
