@@ -13,19 +13,23 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
+    [SerializeField] private ParticleSystem _landingEffect;
+
     private bool _onGround;
 
     private void Awake()
     {
-        
+        _animationController.SetBool("OnGround", _onGround);
     }
 
     public void Run(float direction)
     {
-
         Vector3 startPosition = transform.position;
         transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
+
+        _animationController.SetInteger("Run", (int)direction);
+        _animationController.SetBool("OnGround", _onGround);
     }
 
     private void Rotate(float direction)
@@ -40,6 +44,8 @@ public class ActorMovements : MonoBehaviour
             return;
 
         _onGround = false;
+        _animationController.SetBool("OnGround", _onGround);
+
         StartCoroutine(JumpAnimation(direction));
     }
 
@@ -76,6 +82,10 @@ public class ActorMovements : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!_onGround)
+        {
+            _animationController.SetBool("OnGround", _onGround);
+            Instantiate(_landingEffect, transform.position + new Vector3(0.0f, -1.0f, 0.0f), Quaternion.identity);
             _onGround = true;
+        }
     }
 }

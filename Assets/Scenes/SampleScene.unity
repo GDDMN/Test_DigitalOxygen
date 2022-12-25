@@ -377,9 +377,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _walkSpeed: 8
-  _jumpSpeed: 1
-  _jumpForce: 2
+  _walkSpeed: 10
+  _jumpSpeed: 2
+  _jumpForce: 3
+  _landingEffect: {fileID: 19820956, guid: 56c3274d2f9ec214ab584a80b5ce2d6d, type: 3}
 --- !u!114 &504753901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7034a260c15bef845bbe4d46150ce991, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7034a260c15bef845bbe4d46150ce991, type: 3}
       propertyPath: m_LocalPosition.x
