@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System;
 using System.Collections;
 
 public class ActorMovements : MonoBehaviour
@@ -8,14 +6,13 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private Animator _animationController;
 
     [SerializeField] private AnimationCurve _jumpCurve;
+
     [SerializeField] private float _walkSpeed;
 
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
     [SerializeField] private float _attackDistantion;
-
-    [SerializeField] private ParticleSystem _landingEffect;
 
     private bool _onGround;
     Vector3 startPosition;
@@ -26,12 +23,10 @@ public class ActorMovements : MonoBehaviour
     private void Awake()
     {
         _animationController.SetBool("OnGround", _onGround);
-
     }
 
     public void Run(float direction)
     {
-
         Vector3 startPosition = transform.position;
         transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
@@ -76,37 +71,43 @@ public class ActorMovements : MonoBehaviour
             IsJumping = false;
     }
 
-    public void Hurt(float direction)
+    public void Hurt()
     {
-        StartCoroutine(HurtAnimation(direction));
+        StartCoroutine(HurtAnimation());
     }
 
-    private IEnumerator HurtAnimation(float direction)
+    private IEnumerator HurtAnimation()
     {
         float progress = 0.0f;
-        float horizontalMove = 0.0f;
         Vector3 startPosition = transform.position;
 
         while (progress < 1)
         {
             progress += _jumpSpeed * Time.deltaTime;
-            float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce;
-
-
+            float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce / 2;
             float verticalMove = startPosition.y * jumpEvaluation;
-            horizontalMove += (direction * _walkSpeed * Time.deltaTime);
-
-            transform.position = startPosition + new Vector3(horizontalMove, verticalMove, 0.0f);
+            
+            //transform.position = startPosition + new Vector3(horizontalMove, verticalMove, 0.0f);
             yield return null;
         }
     }
 
     public void Attack(float direction)
     {
-        if (!_onGround)
-            return;
-
         _animationController.SetTrigger("Attack");
+        StartCoroutine(AttackAnimation(direction));
+    }
+
+    private IEnumerator AttackAnimation(float direction)
+    {
+        float progress = 0.0f;
+
+        while(progress <= _attackDistantion)
+        {
+            progress += 2.0f * Time.deltaTime;
+            transform.position += Vector3.right * direction;
+            yield return null;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -116,7 +117,6 @@ public class ActorMovements : MonoBehaviour
             _onGround = true;
             IsJumping = false;
             _animationController.SetBool("OnGround", _onGround);
-            Instantiate(_landingEffect, transform.position + new Vector3(0.0f, -1.0f, 0.0f), Quaternion.identity);
         }
     }
 }

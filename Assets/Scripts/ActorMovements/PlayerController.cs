@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Attack();
         Run();
         Jump();
 
-        _actorMovements.JumpAnimation();
+        if (_actorMovements.IsJumping)
+            _actorMovements.JumpAnimation();
+
+        Attack();
     }
 
 
