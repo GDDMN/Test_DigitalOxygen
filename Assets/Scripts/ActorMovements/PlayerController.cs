@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     private ActorMovements _actorMovements;
@@ -39,5 +38,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
             _actorMovements.Jump();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var interactableObject = other.GetComponent<IInteractable>();
+
+        if (interactableObject != null)
+            interactableObject.Interact(GetComponent<Collider>());
     }
 }
