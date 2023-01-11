@@ -1,8 +1,7 @@
-﻿using System;
+using UnityEngine;
 
-[Serializable]
-public struct ActorGameData
+[CreateAssetMenu(fileName = "ActorGameData", menuName = "GameData/ActorData")]
+public class ActorGameData : ScriptableObject
 {
-    
+    public float Health;
 }
-
