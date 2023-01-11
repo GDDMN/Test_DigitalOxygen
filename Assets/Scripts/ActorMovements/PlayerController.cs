@@ -1,11 +1,10 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 
 public class PlayerController : MonoBehaviour
 {
     private ActorMovements _actorMovements;
-    private int _direction;
+    private float _direction;
 
     private void Awake()
     {
@@ -17,24 +16,26 @@ public class PlayerController : MonoBehaviour
         Attack();
         Run();
         Jump();
+
+        _actorMovements.JumpAnimation();
     }
 
 
     private void Run()
     {
-        _direction = ((int)Input.GetAxis("Horizontal"));
+        _direction = (Input.GetAxis("Horizontal"));
         _actorMovements.Run(_direction);
     }
 
     private void Attack()
     {
         if (Input.GetButtonDown("Fire1"))
-            _actorMovements.Attack();
+            _actorMovements.Attack(_direction);
     }
 
     private void Jump()
     {
         if (Input.GetButtonDown("Jump"))
-            _actorMovements.Jump(_direction);
+            _actorMovements.Jump();
     }
 }

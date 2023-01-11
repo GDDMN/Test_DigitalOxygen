@@ -13,17 +13,25 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
+    [SerializeField] private float _attackDistantion;
+
     [SerializeField] private ParticleSystem _landingEffect;
 
     private bool _onGround;
+    Vector3 startPosition;
+    private float _progress = 0.0f;
+    
+    public bool IsJumping { get; private set; }
 
     private void Awake()
     {
         _animationController.SetBool("OnGround", _onGround);
+
     }
 
     public void Run(float direction)
     {
+
         Vector3 startPosition = transform.position;
         transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
@@ -35,21 +43,45 @@ public class ActorMovements : MonoBehaviour
     private void Rotate(float direction)
     {
         if((int)direction != 0)
-            transform.rotation = Quaternion.Euler(0.0f, 90 * (int)direction, 0.0f);
+            transform.rotation = Quaternion.Euler(0.0f, 90 * direction, 0.0f);
     }
 
-    public void Jump(float direction)
+    public void Jump()
     {
         if (!_onGround)
             return;
 
         _onGround = false;
-        _animationController.SetBool("OnGround", _onGround);
+        IsJumping = true;
 
-        StartCoroutine(JumpAnimation(direction));
+        _animationController.SetBool("OnGround", _onGround);
+        _progress = 0.0f;
+        startPosition = transform.position;
     }
 
-    private IEnumerator JumpAnimation(float direction)
+    public void JumpAnimation()
+    {
+        if (!IsJumping)
+            return;
+
+        _progress += _jumpSpeed * Time.deltaTime;
+        float jumpEvaluation = _jumpCurve.Evaluate(_progress);
+        float deltaYPos = (startPosition.y * jumpEvaluation) * _jumpForce;
+
+        transform.position = new Vector3(transform.position.x,
+                                        startPosition.y + deltaYPos,
+                                        transform.position.z);
+
+        if (_progress >= 1.0f)
+            IsJumping = false;
+    }
+
+    public void Hurt(float direction)
+    {
+        StartCoroutine(HurtAnimation(direction));
+    }
+
+    private IEnumerator HurtAnimation(float direction)
     {
         float progress = 0.0f;
         float horizontalMove = 0.0f;
@@ -59,7 +91,7 @@ public class ActorMovements : MonoBehaviour
         {
             progress += _jumpSpeed * Time.deltaTime;
             float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce;
-            
+
 
             float verticalMove = startPosition.y * jumpEvaluation;
             horizontalMove += (direction * _walkSpeed * Time.deltaTime);
@@ -69,23 +101,22 @@ public class ActorMovements : MonoBehaviour
         }
     }
 
-    public void Hurt()
+    public void Attack(float direction)
     {
+        if (!_onGround)
+            return;
 
-    }
-
-    public void Attack()
-    {
-       
+        _animationController.SetTrigger("Attack");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!_onGround)
         {
+            _onGround = true;
+            IsJumping = false;
             _animationController.SetBool("OnGround", _onGround);
             Instantiate(_landingEffect, transform.position + new Vector3(0.0f, -1.0f, 0.0f), Quaternion.identity);
-            _onGround = true;
         }
     }
 }
