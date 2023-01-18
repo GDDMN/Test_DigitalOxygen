@@ -3,11 +3,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private ActorMovements _actorMovements;
+    private ActorAttack _actorAttack;
     private float _direction;
 
     private void Awake()
     {
         _actorMovements = GetComponent<ActorMovements>();
+        _actorAttack = GetComponent<ActorAttack>();
     }
 
     private void Update()
@@ -31,20 +33,12 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         if (Input.GetButtonDown("Fire1"))
-            _actorMovements.Attack(_direction);
+            _actorAttack.Attack(_direction);
     }
 
     private void Jump()
     {
         if (Input.GetButtonDown("Jump"))
             _actorMovements.Jump();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var interactableObject = other.GetComponent<IInteractable>();
-
-        if (interactableObject != null)
-            interactableObject.Interact(GetComponent<Collider>());
     }
 }

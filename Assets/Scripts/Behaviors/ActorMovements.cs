@@ -12,12 +12,11 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
-    [SerializeField] private float _attackDistantion;
-
     private bool _onGround;
-    Vector3 startPosition;
+    private Vector3 _startPosition;
     private float _progress = 0.0f;
-    
+
+   
     public bool IsJumping { get; private set; }
 
     private void Awake()
@@ -51,7 +50,7 @@ public class ActorMovements : MonoBehaviour
 
         _animationController.SetBool("OnGround", _onGround);
         _progress = 0.0f;
-        startPosition = transform.position;
+        _startPosition = transform.position;
     }
 
     public void JumpAnimation()
@@ -61,10 +60,10 @@ public class ActorMovements : MonoBehaviour
 
         _progress += _jumpSpeed * Time.deltaTime;
         float jumpEvaluation = _jumpCurve.Evaluate(_progress);
-        float deltaYPos = (startPosition.y * jumpEvaluation) * _jumpForce;
+        float deltaYPos = (_startPosition.y * jumpEvaluation) * _jumpForce;
 
         transform.position = new Vector3(transform.position.x,
-                                        startPosition.y + deltaYPos,
+                                        _startPosition.y + deltaYPos,
                                         transform.position.z);
 
         if (_progress >= 1.0f)
@@ -86,26 +85,6 @@ public class ActorMovements : MonoBehaviour
             progress += _jumpSpeed * Time.deltaTime;
             float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce / 2;
             float verticalMove = startPosition.y * jumpEvaluation;
-            
-            //transform.position = startPosition + new Vector3(horizontalMove, verticalMove, 0.0f);
-            yield return null;
-        }
-    }
-
-    public void Attack(float direction)
-    {
-        _animationController.SetTrigger("Attack");
-        StartCoroutine(AttackAnimation(direction));
-    }
-
-    private IEnumerator AttackAnimation(float direction)
-    {
-        float progress = 0.0f;
-
-        while(progress <= _attackDistantion)
-        {
-            progress += 2.0f * Time.deltaTime;
-            transform.position += Vector3.right * direction;
             yield return null;
         }
     }
@@ -120,4 +99,3 @@ public class ActorMovements : MonoBehaviour
         }
     }
 }
-
