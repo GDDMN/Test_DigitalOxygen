@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class ActorAttack: MonoBehaviour, IInteractable
+public class ActorAttack : MonoBehaviour
 {
     [SerializeField] private Animator _animationController;
     [SerializeField] private float _attackDistantion;
 
-    private bool _isAttacking;
+    [SerializeField] public bool IsAttacking { get; private set; }
 
     public void Attack(float direction)
     {
@@ -17,6 +17,7 @@ public class ActorAttack: MonoBehaviour, IInteractable
     private IEnumerator AttackAnimation(float direction)
     {
         float progress = 0.0f;
+        IsAttacking = true;
 
         while (progress <= _attackDistantion)
         {
@@ -24,23 +25,6 @@ public class ActorAttack: MonoBehaviour, IInteractable
             transform.position += Vector3.right * direction;
             yield return null;
         }
-    }
-
-    public void Interact(Collider other)
-    {
-        if (_isAttacking)
-            return;
-
-        var actorMovements = other.GetComponent<ActorMovements>();
-
-        if (actorMovements == null)
-            return;
-
-        actorMovements.Hurt();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Interact(other);
+        IsAttacking = false;
     }
 }

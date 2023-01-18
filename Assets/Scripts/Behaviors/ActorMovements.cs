@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class ActorMovements : MonoBehaviour
 {
@@ -70,24 +69,6 @@ public class ActorMovements : MonoBehaviour
             IsJumping = false;
     }
 
-    public void Hurt()
-    {
-        StartCoroutine(HurtAnimation());
-    }
-
-    private IEnumerator HurtAnimation()
-    {
-        float progress = 0.0f;
-        Vector3 startPosition = transform.position;
-
-        while (progress < 1)
-        {
-            progress += _jumpSpeed * Time.deltaTime;
-            float jumpEvaluation = _jumpCurve.Evaluate(progress) * _jumpForce / 2;
-            float verticalMove = startPosition.y * jumpEvaluation;
-            yield return null;
-        }
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -97,5 +78,13 @@ public class ActorMovements : MonoBehaviour
             IsJumping = false;
             _animationController.SetBool("OnGround", _onGround);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var otherInteract = other.GetComponent<IInteractable>();
+
+        if (otherInteract != null)
+            otherInteract.Interact(GetComponent<Collider>());
     }
 }
