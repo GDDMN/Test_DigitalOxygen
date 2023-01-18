@@ -79,12 +79,4 @@ public class ActorMovements : MonoBehaviour
             _animationController.SetBool("OnGround", _onGround);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var otherInteract = other.GetComponent<IInteractable>();
-
-        if (otherInteract != null)
-            otherInteract.Interact(GetComponent<Collider>());
-    }
 }

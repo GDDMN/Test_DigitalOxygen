@@ -4,4 +4,5 @@ using UnityEngine;
 public class ActorGameData : ScriptableObject
 {
     public float Health;
+    public float Damage;
 }

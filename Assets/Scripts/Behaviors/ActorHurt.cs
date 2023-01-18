@@ -21,17 +21,21 @@ public class ActorHurt : MonoBehaviour, IInteractable
         if (!actorAttack.IsAttacking)
             return;
 
-        TakeDamageCalculation();
+        float damage = other.GetComponent<ActorAttack>().Damage;
+        TakeDamageCalculation(damage);
         TakeDamageAnimation();
     }
    
-    private void TakeDamageCalculation()
+    private void TakeDamageCalculation(float damage)
     {
-        Debug.Log("Hurt");
+        GetComponent<Actor>().actorData.Health -= damage;
+
+        if (GetComponent<Actor>().actorData.Health <= 0)
+            Die();
     }
     private void Die()
     {
-        Debug.Log("Die");
+        Destroy(gameObject);
     }
 
     private void TakeDamageAnimation()
@@ -48,7 +52,5 @@ public class ActorHurt : MonoBehaviour, IInteractable
             progress += _cooldownSpeed * Time.deltaTime;
             yield return null;
         }
-
-        _animationController.SetBool("Hurt", false);
     }
 }

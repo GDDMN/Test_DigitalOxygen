@@ -5,8 +5,10 @@ public class ActorAttack : MonoBehaviour
 {
     [SerializeField] private Animator _animationController;
     [SerializeField] private float _attackDistantion;
+    [SerializeField] private float _damage; 
 
-    [SerializeField] public bool IsAttacking { get; private set; }
+    public bool IsAttacking { get; private set; }
+    public float Damage => _damage;
 
     public void Attack(float direction)
     {
