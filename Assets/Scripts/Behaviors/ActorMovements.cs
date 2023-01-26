@@ -28,8 +28,8 @@ public class ActorMovements : MonoBehaviour
         Vector3 startPosition = transform.position;
         transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
-
-        _animationController.SetInteger("Run", (int)(direction * 10.0f));
+ 
+        _animationController.SetFloat("Run", Mathf.Abs(direction));
         _animationController.SetBool("OnGround", _onGround);
     }
 
