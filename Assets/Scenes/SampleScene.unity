@@ -2630,17 +2630,13 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1001 &1414085435
+--- !u!1001 &1454683595
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2649367755430920792, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
-      propertyPath: _jumpForce
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2649367755430920796, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2688,10 +2684,6 @@ PrefabInstance:
     - target: {fileID: 2649367755430920798, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2649367755430920799, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
-      propertyPath: m_Constraints
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
