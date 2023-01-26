@@ -143,7 +143,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _walkSpeed: 10
   _jumpSpeed: 1
-  _jumpForce: 3
+  _jumpForce: 0.7
 --- !u!114 &2649367755430920795
 MonoBehaviour:
   m_ObjectHideFlags: 0

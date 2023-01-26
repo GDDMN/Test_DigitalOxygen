@@ -129,7 +129,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _walkSpeed: 10
   _jumpSpeed: 1
-  _jumpForce: 3
+  _jumpForce: 0.7
 --- !u!114 &3725529448862116906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b87630d6d09c214a93fed3df26fd6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationController: {fileID: 0}
-  _cooldownSpeed: 0
+  _animationController: {fileID: 5853062296413329817}
+  _cooldownSpeed: 0.2
 --- !u!136 &22751697689737713
 CapsuleCollider:
   m_ObjectHideFlags: 0
