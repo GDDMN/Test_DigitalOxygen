@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b87630d6d09c214a93fed3df26fd6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationController: {fileID: 0}
-  _cooldownSpeed: 0
+  _animationController: {fileID: 8479966139813863981}
+  _cooldownSpeed: 0.2
 --- !u!136 &2649367755430920773
 CapsuleCollider:
   m_ObjectHideFlags: 0
