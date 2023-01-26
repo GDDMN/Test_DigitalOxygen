@@ -59,10 +59,10 @@ public class ActorMovements : MonoBehaviour
 
         _progress += _jumpSpeed * Time.deltaTime;
         float jumpEvaluation = _jumpCurve.Evaluate(_progress);
-        float deltaYPos = (_startPosition.y * jumpEvaluation) * _jumpForce;
+        float deltaYPos = _startPosition.y + (jumpEvaluation *_jumpForce);
 
         transform.position = new Vector3(transform.position.x,
-                                        _startPosition.y + deltaYPos,
+                                        deltaYPos,
                                         transform.position.z);
 
         if (_progress >= 1.0f)

@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour
     {
         Run();
         Jump();
+        Attack();
+    }
 
+    private void FixedUpdate()
+    {
         if (_actorMovements.IsJumping)
             _actorMovements.JumpAnimation();
-
-        Attack();
     }
 
 
