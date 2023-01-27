@@ -6,9 +6,9 @@ public class ActorHurt : MonoBehaviour, IInteractable
     [SerializeField] private Animator _animationController;
     [SerializeField] private float _cooldownSpeed;
 
-    public void Interact(Collider other)
+    public void Interact()
     {
-        Hurt(other);
+        //Hurt(other);
     }
 
     private void Hurt(Collider other)
