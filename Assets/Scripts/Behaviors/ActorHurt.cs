@@ -3,17 +3,27 @@ using UnityEngine;
 
 public class ActorHurt : MonoBehaviour, IInteractable
 {
+    [SerializeField] private Actor _actor;
     [SerializeField] private Animator _animationController;
     [SerializeField] private float _cooldownSpeed;
 
+    [Space(1)]
+    [SerializeField] private ParticleSystem _deathEffect;
+    [SerializeField] private Transform _amaturePosition;
+    private bool _IsDead = false;
+
     public void Interact(Collider other)
     {
-        Hurt(other);
+        var actorAttack = other.GetComponent<ActorAttack>();
+        Hurt(actorAttack.Damage);
     }
 
-    private void Hurt(Collider other)
+    private void Hurt(float damage)
     {
-        //Debug.Log("Hurt " + other.GetComponent<ActorAttack>().Damage);
+        TakeDamageCalculation(damage);
+
+        if (_IsDead)
+            return;
 
         _animationController.SetInteger("HurtType", Random.Range(0, 3));
         _animationController.SetTrigger("Hurt");
@@ -21,29 +31,21 @@ public class ActorHurt : MonoBehaviour, IInteractable
    
     private void TakeDamageCalculation(float damage)
     {
-        GetComponent<Actor>().actorData.Health -= damage;
+        _actor.actorData.Health -= damage;
 
-        if (GetComponent<Actor>().actorData.Health <= 0)
+        if (_actor.actorData.Health <= 0)
             Die();
     }
     private void Die()
     {
-        Destroy(gameObject);
+        _IsDead = true;
+        _animationController.SetBool("Death", _IsDead);
     }
 
-    private void TakeDamageAnimation()
+    public void Death()
     {
-        StartCoroutine(HurtAnimation());
+        Instantiate(_deathEffect.gameObject, _amaturePosition.position, Quaternion.identity);
+        _actor.Death();
     }
 
-    private IEnumerator HurtAnimation()
-    {
-        float progress = 0.0f;
-
-        while (progress < 1)
-        {
-            progress += _cooldownSpeed * Time.deltaTime;
-            yield return null;
-        }
-    }
 }

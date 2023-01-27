@@ -11,8 +11,11 @@ public struct ActorData
 public class Actor : MonoBehaviour
 {
     public ActorData actorData;
-    private void OnTriggerEnter(Collider other)
+    
+    
+    public void Death()
     {
-
+        
+        Destroy(gameObject);
     }
 }
