@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         if (Input.GetButtonDown("Fire1"))
-            _actorAttack.Attack(_direction);
+            _actorAttack.StartAttack();
     }
 
     private void Jump()

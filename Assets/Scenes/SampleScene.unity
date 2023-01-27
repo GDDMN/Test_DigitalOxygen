@@ -2461,17 +2461,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4562075604489022, guid: 1b8fbee291cdc1046a281cb2b3b51bf7, type: 3}
   m_PrefabInstance: {fileID: 1162301244}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1178135122 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4832926138991977967, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
-  m_PrefabInstance: {fileID: 1454683595}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1257141631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2617,7 +2606,7 @@ PrefabInstance:
     - target: {fileID: 2649367755430920793, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: _actorAttack
       value: 
-      objectReference: {fileID: 1178135122}
+      objectReference: {fileID: 1454683599}
     - target: {fileID: 2649367755430920793, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: _actorMovements
       value: 
@@ -2674,8 +2663,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4832926138991977967, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
+--- !u!114 &1454683599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
+  m_PrefabInstance: {fileID: 1454683595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1476476049
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,13 +18,28 @@ public class ActorAttack : MonoBehaviour
         Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
 
-    public void Attack(float direction)
+    public void Attack()
     {
-        _animationController.SetTrigger("Attack");
-
         Collider[] hit = Physics.OverlapSphere(_attackPoint.position, _attackRange, _enemyLayer);
 
         foreach (Collider hitted in hit)
             hitted.GetComponent<IInteractable>().Interact(GetComponent<Collider>());
     }
+
+    public void StartAttack()
+    {
+        if (IsAttacking)
+            return;
+
+        _animationController.SetInteger("PunchType", Random.Range(0, 3));
+        _animationController.SetTrigger("Attack");
+        IsAttacking = true;
+    }
+
+    public void EndAttack()
+    {
+        IsAttacking = false;
+    }
+
+
 }
