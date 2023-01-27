@@ -13,7 +13,10 @@ public class ActorHurt : MonoBehaviour, IInteractable
 
     private void Hurt(Collider other)
     {
-        Debug.Log("Hurt " + other.GetComponent<ActorAttack>().Damage);
+        //Debug.Log("Hurt " + other.GetComponent<ActorAttack>().Damage);
+
+        _animationController.SetInteger("HurtType", Random.Range(0, 3));
+        _animationController.SetTrigger("Hurt");
     }
    
     private void TakeDamageCalculation(float damage)
