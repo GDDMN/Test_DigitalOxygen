@@ -11,16 +11,23 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
+    [SerializeField] private Transform _groundCheckPoint;
+
     private bool _onGround;
     private Vector3 _startPosition;
     private float _progress = 0.0f;
 
-   
     public bool IsJumping { get; private set; }
+
 
     private void Awake()
     {
         _animationController.SetBool("OnGround", _onGround);
+    }
+
+    private void Update()
+    {
+        OnGround();
     }
 
     public void Run(float direction)
@@ -44,10 +51,9 @@ public class ActorMovements : MonoBehaviour
         if (!_onGround)
             return;
 
-        _onGround = false;
         IsJumping = true;
 
-        _animationController.SetBool("OnGround", _onGround);
+        
         _progress = 0.0f;
         _startPosition = transform.position;
     }
@@ -69,14 +75,17 @@ public class ActorMovements : MonoBehaviour
             IsJumping = false;
     }
 
+    private void OnGround()
+    {
+        float distance = 1.0f;
+        
+        Ray ray = new Ray(_groundCheckPoint.position, Vector3.down);
+        _onGround = Physics.Raycast(ray, distance);
+        _animationController.SetBool("OnGround", _onGround);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_onGround)
-        {
-            _onGround = true;
-            IsJumping = false;
-            _animationController.SetBool("OnGround", _onGround);
-        }
+        IsJumping = false;
     }
 }
