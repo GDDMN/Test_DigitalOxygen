@@ -7,14 +7,13 @@ public class ActorAttack : MonoBehaviour
     [SerializeField] private float _attackRange;
     [SerializeField] private LayerMask _enemyLayer;
 
-
     [SerializeField] private float _damage;
 
 
     public bool IsAttacking { get; private set; }
     public float Damage => _damage;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
@@ -26,6 +25,6 @@ public class ActorAttack : MonoBehaviour
         Collider[] hit = Physics.OverlapSphere(_attackPoint.position, _attackRange, _enemyLayer);
 
         foreach (Collider hitted in hit)
-            hitted.GetComponent<IInteractable>().Interact();
+            hitted.GetComponent<IInteractable>().Interact(GetComponent<Collider>());
     }
 }

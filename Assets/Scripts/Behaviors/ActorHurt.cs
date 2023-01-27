@@ -6,24 +6,14 @@ public class ActorHurt : MonoBehaviour, IInteractable
     [SerializeField] private Animator _animationController;
     [SerializeField] private float _cooldownSpeed;
 
-    public void Interact()
+    public void Interact(Collider other)
     {
-        //Hurt(other);
+        Hurt(other);
     }
 
     private void Hurt(Collider other)
     {
-        var actorAttack = other.GetComponent<ActorAttack>();
-
-        if (actorAttack == null)
-            return;
-
-        if (!actorAttack.IsAttacking)
-            return;
-
-        float damage = other.GetComponent<ActorAttack>().Damage;
-        TakeDamageCalculation(damage);
-        TakeDamageAnimation();
+        Debug.Log("Hurt " + other.GetComponent<ActorAttack>().Damage);
     }
    
     private void TakeDamageCalculation(float damage)
