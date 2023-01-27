@@ -2,5 +2,5 @@
 
 public interface IInteractable
 {
-    abstract void Interact();
+    abstract void Interact(Collider other);
 }

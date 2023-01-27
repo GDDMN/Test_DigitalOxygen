@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private ActorMovements _actorMovements;
-    private ActorAttack _actorAttack;
+    [SerializeField]private ActorMovements _actorMovements;
+    [SerializeField]private ActorAttack _actorAttack;
+
     private float _direction;
 
-    private void Awake()
-    {
-        _actorMovements = GetComponent<ActorMovements>();
-        _actorAttack = GetComponent<ActorAttack>();
-    }
 
     private void Update()
     {
