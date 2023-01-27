@@ -14,6 +14,11 @@ public class ActorAttack : MonoBehaviour
     public bool IsAttacking { get; private set; }
     public float Damage => _damage;
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    }
+
     public void Attack(float direction)
     {
         _animationController.SetTrigger("Attack");
