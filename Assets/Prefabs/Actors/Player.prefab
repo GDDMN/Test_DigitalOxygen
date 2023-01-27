@@ -236,11 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationController: {fileID: 8479966139813863981}
-  _attackPoint: {fileID: 0}
-  _attackRange: 0
+  _attackPoint: {fileID: 3768646561295457953}
+  _attackRange: 0.49
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _damage: 0
 --- !u!1001 &2649367754346504124
 PrefabInstance:
