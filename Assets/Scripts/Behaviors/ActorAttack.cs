@@ -8,9 +8,6 @@ public class ActorAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
 
     [SerializeField] private float _damage;
-
-
-    public bool IsAttacking { get; private set; }
     public float Damage => _damage;
 
     private void OnDrawGizmosSelected()
@@ -28,7 +25,7 @@ public class ActorAttack : MonoBehaviour
 
     public void StartAttack()
     {
-        _animationController.SetInteger("PunchType", Random.Range(0, 2));
+        _animationController.SetInteger("PunchType", Random.Range(0, 3));
         _animationController.SetTrigger("Attack");
     }
 }
