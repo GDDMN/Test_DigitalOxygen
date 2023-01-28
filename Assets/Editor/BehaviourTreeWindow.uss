@@ -1,0 +1,6 @@
+GridBackground{
+	--grid-background-color: rgb(20, 20, 20);
+	--line-color: rgba(100, 100, 100, 0.1);
+	--tick-line-color: rgba(193, 193, 193, 0.1);
+	--spacing: 15;
+}
