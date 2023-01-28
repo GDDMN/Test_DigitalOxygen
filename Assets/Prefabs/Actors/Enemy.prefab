@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5369323220126713655}
   - component: {fileID: 5369323220126713653}
   - component: {fileID: 10345481187189253}
-  - component: {fileID: 5369323220126713650}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -82,56 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorData:
     Health: 1
---- !u!114 &5369323220126713650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369323220126713654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a348a2f318bc3a84da515e9064107b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationController: {fileID: 2011207620958840647}
-  _jumpCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 4.1119723
-      outSlope: 4.1119723
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.063770585
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: -0.0027789962
-      outSlope: -0.0027789962
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.3114717
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -4.4526973
-      outSlope: -4.4526973
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.05374837
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _walkSpeed: 10
-  _jumpSpeed: 1
-  _jumpForce: 0.7
-  _groundCheckPoint: {fileID: 7835153651545722526}
+  _player: {fileID: 0}
 --- !u!1001 &5369323219038755542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -787,11 +737,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animationController: {fileID: 2011207620958840647}
   _attackPoint: {fileID: 2170959846777827908}
-  _attackRange: 50
+  _attackRange: 0.5
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
   _damage: 0.3
+--- !u!114 &4611245043949262442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062823151050876807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a348a2f318bc3a84da515e9064107b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorObject: {fileID: 5369323220126713652}
+  _animationController: {fileID: 2011207620958840647}
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5.2039213
+      outSlope: 5.2039213
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.03416856
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -5.5267715
+      outSlope: -5.5267715
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03815508
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _walkSpeed: 10
+  _jumpSpeed: 1
+  _jumpForce: 0.7
+  _groundCheckPoint: {fileID: 7835153651545722526}
+  _landingParticle: {fileID: 19875214, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
 --- !u!1001 &5407746116896617605
 PrefabInstance:
   m_ObjectHideFlags: 0

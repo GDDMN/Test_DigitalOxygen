@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ActorMovements : MonoBehaviour
 {
+    [SerializeField] private Transform _actorObject;
+
     [SerializeField] private Animator _animationController;
 
     [SerializeField] private AnimationCurve _jumpCurve;
@@ -12,6 +14,7 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpForce;
 
     [SerializeField] private Transform _groundCheckPoint;
+    [SerializeField] private ParticleSystem _landingParticle;
 
     private bool _onGround;
     private Vector3 _startPosition;
@@ -32,8 +35,8 @@ public class ActorMovements : MonoBehaviour
 
     public void Run(float direction)
     {
-        Vector3 startPosition = transform.position;
-        transform.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
+        Vector3 startPosition = _actorObject.position;
+        _actorObject.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
         Rotate(direction);
  
         _animationController.SetFloat("Run", Mathf.Abs(direction));
@@ -43,7 +46,7 @@ public class ActorMovements : MonoBehaviour
     private void Rotate(float direction)
     {
         if((int)direction != 0)
-            transform.rotation = Quaternion.Euler(0.0f, 90 * direction, 0.0f);
+            _actorObject.rotation = Quaternion.Euler(0.0f, 90 * direction, 0.0f);
     }
 
     public void Jump()
@@ -55,7 +58,7 @@ public class ActorMovements : MonoBehaviour
 
         
         _progress = 0.0f;
-        _startPosition = transform.position;
+        _startPosition = _actorObject.position;
     }
 
     public void JumpAnimation()
@@ -67,12 +70,19 @@ public class ActorMovements : MonoBehaviour
         float jumpEvaluation = _jumpCurve.Evaluate(_progress);
         float deltaYPos = _startPosition.y + (jumpEvaluation *_jumpForce);
 
-        transform.position = new Vector3(transform.position.x,
-                                        deltaYPos,
-                                        transform.position.z);
+        _actorObject.position = new Vector3(_actorObject.position.x,
+                                            deltaYPos,
+                                            _actorObject.position.z);
 
         if (_progress >= 1.0f)
             IsJumping = false;
+    }
+
+    public void PlayLandingEffect()
+    {
+        Instantiate(_landingParticle, new Vector3(_groundCheckPoint.position.x, 
+                                                  _groundCheckPoint.position.y-1,
+                                                  _groundCheckPoint.position.z), Quaternion.identity);
     }
 
     private void OnGround()
@@ -81,10 +91,11 @@ public class ActorMovements : MonoBehaviour
         
         Ray ray = new Ray(_groundCheckPoint.position, Vector3.down);
         _onGround = Physics.Raycast(ray, distance);
+
         _animationController.SetBool("OnGround", _onGround);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         IsJumping = false;
     }
