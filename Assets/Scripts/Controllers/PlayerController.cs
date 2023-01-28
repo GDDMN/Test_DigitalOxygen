@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Actor
 {
     [SerializeField]private ActorMovements _actorMovements;
     [SerializeField]private ActorAttack _actorAttack;
@@ -38,5 +38,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
             _actorMovements.Jump();
+    }
+
+    public override void Death()
+    {
+
     }
 }

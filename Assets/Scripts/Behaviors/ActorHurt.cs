@@ -9,6 +9,7 @@ public class ActorHurt : MonoBehaviour, IInteractable
 
     [Space(1)]
     [SerializeField] private ParticleSystem _deathEffect;
+    [SerializeField] private ParticleSystem _punchEffect;
     [SerializeField] private Transform _amaturePosition;
     private bool _IsDead = false;
 
@@ -25,6 +26,7 @@ public class ActorHurt : MonoBehaviour, IInteractable
         if (_IsDead)
             return;
 
+        _punchEffect.Play();
         _animationController.SetInteger("HurtType", Random.Range(0, 3));
         _animationController.SetTrigger("Hurt");
     }

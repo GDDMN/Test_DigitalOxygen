@@ -8,14 +8,9 @@ public struct ActorData
     public float Health;
 }
 
-public class Actor : MonoBehaviour
+public abstract class Actor : MonoBehaviour
 {
     public ActorData actorData;
-    
-    
-    public void Death()
-    {
-        
-        Destroy(gameObject);
-    }
+
+    abstract public void Death();
 }
