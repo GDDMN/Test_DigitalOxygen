@@ -28,18 +28,7 @@ public class ActorAttack : MonoBehaviour
 
     public void StartAttack()
     {
-        if (IsAttacking)
-            return;
-
         _animationController.SetInteger("PunchType", Random.Range(0, 2));
         _animationController.SetTrigger("Attack");
-        IsAttacking = true;
     }
-
-    public void EndAttack()
-    {
-        IsAttacking = false;
-    }
-
-
 }

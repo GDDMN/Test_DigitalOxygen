@@ -21,12 +21,12 @@ public class ActorHurt : MonoBehaviour, IInteractable
 
     private void Hurt(float damage)
     {
+        _punchEffect.Play();
         TakeDamageCalculation(damage);
 
         if (_IsDead)
             return;
 
-        _punchEffect.Play();
         _animationController.SetInteger("HurtType", Random.Range(0, 3));
         _animationController.SetTrigger("Hurt");
     }

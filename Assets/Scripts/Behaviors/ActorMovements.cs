@@ -16,10 +16,11 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private ParticleSystem _landingParticle;
 
-    private bool _onGround;
+    private bool _onGround = false;
     private Vector3 _startPosition;
     private float _progress = 0.0f;
 
+    public bool OnGround => _onGround;
     public bool IsJumping { get; private set; }
 
 
@@ -30,7 +31,7 @@ public class ActorMovements : MonoBehaviour
 
     private void Update()
     {
-        OnGround();
+        OnGroundCheck();
     }
 
     public void Run(float direction)
@@ -85,7 +86,7 @@ public class ActorMovements : MonoBehaviour
                                                   _groundCheckPoint.position.z), Quaternion.identity);
     }
 
-    private void OnGround()
+    private void OnGroundCheck()
     {
         float distance = 1.5f;
         

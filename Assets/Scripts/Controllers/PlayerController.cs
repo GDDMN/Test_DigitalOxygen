@@ -12,7 +12,9 @@ public class PlayerController : Actor
     {
         Run();
         Jump();
-        Attack();
+
+        if(!_actorMovements.IsJumping && _actorMovements.OnGround && Mathf.Abs(_direction) < .01f)
+            Attack();
     }
 
     private void FixedUpdate()
