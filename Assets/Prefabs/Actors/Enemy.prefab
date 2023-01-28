@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 5369323220126713653}
   - component: {fileID: 10345481187189253}
   - component: {fileID: 5369323220126713650}
-  - component: {fileID: 5369323220126713649}
-  - component: {fileID: 5369323220126713647}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -134,39 +132,6 @@ MonoBehaviour:
   _jumpSpeed: 1
   _jumpForce: 0.7
   _groundCheckPoint: {fileID: 7835153651545722526}
---- !u!114 &5369323220126713649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369323220126713654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationController: {fileID: 2011207620958840647}
-  _attackPoint: {fileID: 2170959846777827908}
-  _attackRange: 0
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _damage: 0.2
---- !u!136 &5369323220126713647
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369323220126713654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5369323219038755542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -771,6 +736,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 7034a260c15bef845bbe4d46150ce991, type: 3}
   m_PrefabInstance: {fileID: 5369323219038755542}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3583113964354629027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8879528566716807029, guid: 7034a260c15bef845bbe4d46150ce991, type: 3}
+  m_PrefabInstance: {fileID: 5369323219038755542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &1215245834253250227
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -800,9 +770,28 @@ MonoBehaviour:
   _actor: {fileID: 10345481187189253}
   _animationController: {fileID: 2011207620958840647}
   _cooldownSpeed: 0
-  _deathEffect: {fileID: 0}
+  _deathEffect: {fileID: 19832984, guid: 65221b7881c819a429dbe5e646b0bd6b, type: 3}
   _punchEffect: {fileID: 5407746116881054639}
-  _amaturePosition: {fileID: 0}
+  _amaturePosition: {fileID: 3583113964354629027}
+--- !u!114 &4119581939967236840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062823151050876807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationController: {fileID: 2011207620958840647}
+  _attackPoint: {fileID: 2170959846777827908}
+  _attackRange: 50
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _damage: 0.3
 --- !u!1001 &5407746116896617605
 PrefabInstance:
   m_ObjectHideFlags: 0
