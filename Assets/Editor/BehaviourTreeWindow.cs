@@ -34,6 +34,7 @@ public class BehaviourTreeWindow : EditorWindow
         _treeView = root.Q<BehaviourTreeView>();
         _inspectorView = root.Q<InspectorView>();
 
+        _treeView.OnNodeSelected = OnNodeSelectionChanged;
         OnSelectionChange();
     }
 
@@ -44,5 +45,10 @@ public class BehaviourTreeWindow : EditorWindow
         {
             _treeView.PopulateView(tree);
         }
+    }
+
+    private void OnNodeSelectionChanged(NodeView node)
+    {
+        _inspectorView.UpdateSelection(node);
     }
 }
