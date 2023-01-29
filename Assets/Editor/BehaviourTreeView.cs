@@ -21,6 +21,10 @@ public class BehaviourTreeView : GraphView
        styleSheets.Add(styleSheet);
     }
 
+    private NodeView FindNodeView(Node node)
+    {
+        return GetNodeByGuid(node.guid) as NodeView;
+    }
     internal void PopulateView(BehaviourTree tree)
     {
         _tree = tree;
@@ -30,6 +34,19 @@ public class BehaviourTreeView : GraphView
         graphViewChanged += OnGraphViewChanged;
 
         tree.nodes.ForEach(n => CreateNodeView(n));
+
+        tree.nodes.ForEach(n =>
+        {
+            var children = tree.GetChildren(n);
+            children.ForEach(c =>
+            {
+                NodeView parent = FindNodeView(n);
+                NodeView child = FindNodeView(c);
+
+                Edge edge = parent.output.ConnectTo(child.input);
+                AddElement(edge);
+            });
+        });
     }
 
     private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
