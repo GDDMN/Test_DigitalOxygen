@@ -6,6 +6,9 @@ using UnityEditor.UIElements;
 
 public class BehaviourTreeWindow : EditorWindow
 {
+    private BehaviourTreeView _treeView;
+    private InspectorView _inspectorView;
+
     [MenuItem("BehaviourTreeWindow/Editor ...")]
     public static void OpenWndow()
     {
@@ -27,5 +30,17 @@ public class BehaviourTreeWindow : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehaviourTreeWindow.uss");
         root.styleSheets.Add(styleSheet);
+
+        _treeView = root.Q<BehaviourTreeView>();
+        _inspectorView = root.Q<InspectorView>();
+    }
+
+    private void OnSelectionChange()
+    {
+        BehaviourTree tree = Selection.activeObject as BehaviourTree;
+        if(tree)
+        {
+            _treeView.PopulateView(tree);
+        }
     }
 }
