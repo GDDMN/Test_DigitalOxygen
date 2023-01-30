@@ -24,21 +24,20 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         if(node is ActionNode)
         {
-            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
         else if(node is CompositeNode)
         {
-            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+            output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
         }
         else if(node is DecoratorNode)
         {
-            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+            output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
         }
 
-        if(input != null)
+        if(output != null)
         {
-            input.portName = "";
-            inputContainer.Add(input);
+            output.portName = "";
+            outputContainer.Add(output);
         }
     }
 
@@ -46,20 +45,22 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         if (node is ActionNode)
         {
+            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+
         }
         else if (node is CompositeNode)
         {
-            output = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
         else if (node is DecoratorNode)
         {
-            output = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+            input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
 
-        if (output != null)
+        if (input != null)
         {
-            output.portName = "";
-            outputContainer.Add(output);
+            input.portName = "";
+            inputContainer.Add(input);
         }
     }
     public override void SetPosition(Rect newPos)
