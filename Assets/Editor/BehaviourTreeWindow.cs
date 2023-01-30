@@ -41,7 +41,7 @@ public class BehaviourTreeWindow : EditorWindow
     private void OnSelectionChange()
     {
         BehaviourTree tree = Selection.activeObject as BehaviourTree;
-        if(tree)
+        if(tree) 
         {
             _treeView.PopulateView(tree);
         }

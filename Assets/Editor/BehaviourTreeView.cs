@@ -35,6 +35,13 @@ public class BehaviourTreeView : GraphView
         graphElements.ForEach(grapshElement => RemoveElement(grapshElement));
         graphViewChanged += OnGraphViewChanged;
 
+        if(tree.rootNode == null)
+        {
+            tree.rootNode = tree.CreateNode(typeof(RootNode)) as RootNode;
+            EditorUtility.SetDirty(tree);
+            AssetDatabase.SaveAssets();
+        }
+
         tree.nodes.ForEach(n => CreateNodeView(n));
 
         tree.nodes.ForEach(n =>
