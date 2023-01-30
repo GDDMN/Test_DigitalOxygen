@@ -57,7 +57,6 @@ public class ActorMovements : MonoBehaviour
 
         IsJumping = true;
 
-        
         _progress = 0.0f;
         _startPosition = _actorObject.position;
     }

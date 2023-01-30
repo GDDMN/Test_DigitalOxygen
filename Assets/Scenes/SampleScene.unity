@@ -8601,8 +8601,20 @@ PrefabInstance:
       value: 0.06769316
       objectReference: {fileID: 0}
     - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
+      propertyPath: _damage
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: _attackRange
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
+      propertyPath: _punchFatigue
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
+      propertyPath: _punchRecovery
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8072896183045659776, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: m_LocalPosition.x

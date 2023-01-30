@@ -9,12 +9,22 @@ public class ActorAttack : MonoBehaviour
 
     [SerializeField] private float _damage;
 
+    [SerializeField, Range(0f, 1.5f)] private float _stamina;
+    [SerializeField] private float _punchFatigue;
+    [SerializeField] private float _punchRecovery;
+
     private int _punchType;
     public float Damage => _damage;
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    }
+
+    private void Update()
+    {
+        if (_stamina > 0.0f)
+            _stamina -= _punchRecovery * Time.deltaTime;
     }
 
     public void Attack()
@@ -28,6 +38,12 @@ public class ActorAttack : MonoBehaviour
     public void StartAttack()
     {
         int punch;
+
+        if (_stamina > 1.0f)
+            return;
+
+        if (_stamina < 1.5f)
+            _stamina += _punchFatigue;
 
         do
         {
