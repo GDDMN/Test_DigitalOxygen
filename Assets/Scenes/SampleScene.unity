@@ -1593,6 +1593,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1246924913}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: _behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: d15d2615b7630f742b9f075c8215a9ca, type: 2}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _actorMovements
       value: 
       objectReference: {fileID: 901670368}
@@ -5393,7 +5397,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.20647915, g: 0.4716981, b: 0.4406516, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
