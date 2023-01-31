@@ -88,9 +88,9 @@ public class ActorMovements : MonoBehaviour
     private void OnGroundCheck()
     {
         float distance = 1.5f;
-        
+
         Ray ray = new Ray(_groundCheckPoint.position, Vector3.down);
-        _onGround = Physics.Raycast(ray, distance);
+        _onGround = Physics.Raycast(ray,distance);
 
         _animationController.SetBool("OnGround", _onGround);
     }

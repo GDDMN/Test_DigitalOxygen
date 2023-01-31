@@ -55,6 +55,7 @@ public class EnemyController : Actor
     }
     public override void Death()
     {
+        onDeath.Invoke(this);
         Destroy(gameObject);
     }
 }
