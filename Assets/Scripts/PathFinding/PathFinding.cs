@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PathFinding 
 {
@@ -10,11 +11,22 @@ public class PathFinding
     private Grid<PathNode> grid;
     private List<PathNode> openList;
     private List<PathNode> closedList;
+        
 
-    public PathFinding(int width, int height)
+    public PathFinding(int width, int height, Tilemap tilemap)
     {
-        grid = new Grid<PathNode>(width, height, 1.0f, new Vector3(-11, 0),
+        grid = new Grid<PathNode>(width, height, 1.0f, new Vector3(-11, -.5f),
             (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+
+        Transform[] tilepositions = tilemap.gameObject.GetComponentsInChildren<Transform>();
+        
+        foreach(var tile in tilepositions)
+        {
+            grid.GetXY(tile.position, out int x , out int y);
+            
+            if(x < width && x > 0 && y > 0 && y < height)
+                grid.GetGridObject(x, y).isWalkable = false;
+        }
     }
 
     public Grid<PathNode> GetGrid()
@@ -28,9 +40,9 @@ public class PathFinding
         PathNode closedNode = grid.GetGridObject(endX, endY);
 
         openList = new List<PathNode> { startNode };
-        closedList = new List<PathNode> ();
+        closedList = new List<PathNode>();
 
-        for(int x=0;x < grid.GetWidth; x++)
+        for (int x=0;x < grid.GetWidth; x++)
         {
             for (int y = 0; y < grid.GetHeight; y++)
             {
@@ -59,6 +71,11 @@ public class PathFinding
             foreach(PathNode neighbourNode in GetNeighboursList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
+                if(!neighbourNode.isWalkable)
+                {
+                    closedList.Add(neighbourNode);
+                    continue;
+                }
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if(tentativeGCost < neighbourNode.gCost)
@@ -75,6 +92,8 @@ public class PathFinding
                 }
             }
         }
+
+
 
         return null;
     }

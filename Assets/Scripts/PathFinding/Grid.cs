@@ -34,13 +34,13 @@ public class Grid <TGridObject>
             for (int j = 0; j < _gridArray.GetLength(1); j++)
                 _gridArray[i, j] = createGridObject(this, i, j);
 
-        _debugTextArray = new TextMesh[width, height];
+        //_debugTextArray = new TextMesh[width, height];
 
         for(int i=0;i<_gridArray.GetLength(0); i++)
         {
             for(int j=0;j<_gridArray.GetLength(1);j++)
             {
-                _debugTextArray[i, j] = UtilsClass.CreateWorldText(_gridArray[i, j].ToString(), null, GetWorldPosition(i, j) + new Vector3(cellSize, cellSize) * .5f, 5, Color.black, TextAnchor.UpperRight);
+                //_debugTextArray[i, j] = UtilsClass.CreateWorldText(_gridArray[i, j].ToString(), null, GetWorldPosition(i, j) + new Vector3(cellSize, cellSize) * .5f, 1, Color.white, TextAnchor.UpperRight);
                 Debug.DrawLine(GetWorldPosition(i, j), GetWorldPosition(i, j + 1), Color.black, 100f);
                 Debug.DrawLine(GetWorldPosition(i, j), GetWorldPosition(i + 1, j), Color.black, 100f);
             }

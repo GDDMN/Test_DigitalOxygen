@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using CodeMonkey.Utils;
 using System.Collections.Generic;
 
@@ -6,10 +7,13 @@ public class EnemyController : Actor
 {
     [SerializeField] private PlayerController _player;
     [SerializeField] private ActorMovements _actorMovements;
+    [SerializeField] private Tilemap tilemap;
+
     private PathFinding pathFinding;
+    
     private void Start()
     {
-        pathFinding = new PathFinding(31, 17);
+        pathFinding = new PathFinding(34, 20, tilemap);
     }
 
     private void Update()
@@ -22,8 +26,8 @@ public class EnemyController : Actor
         {
             for (int i = 0; i < path.Count - 1; i++)
             {
-                Debug.DrawLine(new Vector3(path[i].X - 11, path[i].Y) + Vector3.one,
-                    new Vector3(path[i + 1].X - 11, path[i + 1].Y) + Vector3.one, Color.green);
+                Debug.DrawLine(new Vector3(path[i].X - 11, path[i].Y),
+                    new Vector3(path[i + 1].X - 11, path[i + 1].Y), Color.green);
             }
         }
     }
@@ -45,7 +49,7 @@ public class EnemyController : Actor
     }
     public override void Death()
     {
-        onDeath.Invoke(this);
+        //onDeath.Invoke(this);
         Destroy(gameObject);
     }
 }

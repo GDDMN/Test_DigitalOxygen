@@ -15,7 +15,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b1c10122cf3fd7b4c98d30bd381f358c
-  position: {x: 0, y: 0}
+  position: {x: 279, y: 185.504}
   child: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:

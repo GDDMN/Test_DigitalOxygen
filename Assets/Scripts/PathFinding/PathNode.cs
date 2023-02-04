@@ -12,6 +12,7 @@ public class PathNode
     public int fCost;
 
     public PathNode cameFromNode;
+    public bool isWalkable = true;
 
     public int X => _x;
     public int Y => _y;
