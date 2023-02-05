@@ -18,12 +18,16 @@ public class EnemyController : Actor
 
     private void Update()
     {
-        pathFinding.GetGrid().GetXY(transform.position, out int xStart, out int yStart);
-        pathFinding.GetGrid().GetXY(_player.gameObject.transform.position, out int xEnd, out int yEnd);
+        if (_player == null)
+            return; 
+
+        pathFinding.GetGrid().GetXY(transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
+        pathFinding.GetGrid().GetXY(_player.gameObject.transform.position - new Vector3(0f, 1f, 0f), out int xEnd, out int yEnd);
 
         List<PathNode> path = pathFinding.FindPath(xStart, yStart, xEnd, yEnd);
         if (path != null)
         {
+
             for (int i = 0; i < path.Count - 1; i++)
             {
                 Debug.DrawLine(new Vector3(path[i].X - 11, path[i].Y),

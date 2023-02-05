@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class PathFinding 
 {
     private const int MOVE_STRAIGHT_COST = 10;
-    private const int MOVE_DIAGONAL_COST = 14;
+    private const int MOVE_DIAGONAL_COST = 10;
 
     private Grid<PathNode> grid;
     private List<PathNode> openList;
@@ -25,7 +25,7 @@ public class PathFinding
             grid.GetXY(tile.position, out int x , out int y);
             
             if(x < width && x > 0 && y > 0 && y < height)
-                grid.GetGridObject(x, y).isWalkable = false;
+                grid.GetGridObject(x, y-1).isWalkable = false;
         }
     }
 
@@ -92,9 +92,6 @@ public class PathFinding
                 }
             }
         }
-
-
-
         return null;
     }
 
