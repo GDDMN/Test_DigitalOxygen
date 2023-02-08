@@ -37,4 +37,9 @@ public class Vertex : MonoBehaviour
         actor.vertex = null;
         actors.Remove(actor);
     }
+
+    public List<Vertex> GetReachable()
+    {
+        return reachable;
+    }
 }
