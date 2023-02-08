@@ -53,7 +53,9 @@ public class EnemyController : Actor
     }
     public override void Death()
     {
-        //onDeath.Invoke(this);
+        if(vertex != null)
+            vertex.RemoveActorAction(this);
+        
         Destroy(gameObject);
     }
 }

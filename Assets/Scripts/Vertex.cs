@@ -1,37 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Vertex : MonoBehaviour
 {
-    public List<Vertex> reachable = new List<Vertex>();
-    public List<Actor> actors = new List<Actor>();
+    [SerializeField] private List<Vertex> reachable = new List<Vertex>();
+    [SerializeField] private List<Actor> actors = new List<Actor>();
+    
+    public UnityAction<Actor> AddActorAction;
+    public UnityAction<Actor> RemoveActorAction;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        var layer = other.gameObject.layer;
-
-        if (layer == 9)
-        {
-            actors.Add(other.GetComponent<Actor>());
-            other.GetComponent<Actor>().onDeath += RemoveDeadActor;
-        }
-            
+        AddActorAction += AddActor;
+        RemoveActorAction += RemoveActor;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        var layer = other.gameObject.layer;
+        if (reachable.Count == 0)
+            return; 
 
-        if (layer == 9)
-        {
-            actors.Remove(other.GetComponent<Actor>());
-            other.GetComponent<Actor>().onDeath -= RemoveDeadActor;
-        }
+        foreach (var vertex in reachable)
+            Debug.DrawLine(transform.position, vertex.transform.position, Color.white);
     }
 
-    private void RemoveDeadActor(Actor actor)
+    private void AddActor(Actor actor)
     {
+        actor.vertex = this;
+        actors.Add(actor);
+    }
+    
+    private void RemoveActor(Actor actor)
+    {
+        actor.vertex = null;
         actors.Remove(actor);
     }
 }

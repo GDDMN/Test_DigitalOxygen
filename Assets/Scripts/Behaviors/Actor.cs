@@ -12,7 +12,7 @@ public struct ActorData
 public abstract class Actor : MonoBehaviour
 {
     public ActorData actorData;
-    public UnityAction<Actor> onDeath;
+    public Vertex vertex;
 
     abstract public void Death();
 }
