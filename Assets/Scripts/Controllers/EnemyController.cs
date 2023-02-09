@@ -24,14 +24,15 @@ public class EnemyController : Actor
 
     private void Update()
     {
-        if (_player == null || graph.Count == 0)
+        if (_player == null )
             return;
+
+        pathFinding.GetGrid().GetXY(transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
+        List<PathNode> path;
 
         if (graph.Contains(this.vertex))
             graph.Remove(this.vertex);
 
-        pathFinding.GetGrid().GetXY(transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
-        List<PathNode> path;
 
         if (graph.Count > 0)
         {
@@ -50,6 +51,15 @@ public class EnemyController : Actor
             {
                 Debug.DrawLine(new Vector3(path[i].X - 11, path[i].Y),
                     new Vector3(path[i + 1].X - 11, path[i + 1].Y), Color.green);
+            }
+
+            if(graph.Count > 0)
+            {
+                for(int i=0; i< graph.Count-1;i++)
+                {
+                    Debug.DrawLine(graph[i].transform.position,
+                                   graph[1+i].transform.position, Color.green);
+                }
             }
         }
     }
