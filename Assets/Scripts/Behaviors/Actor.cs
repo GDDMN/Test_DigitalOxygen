@@ -13,6 +13,7 @@ public abstract class Actor : MonoBehaviour
 {
     public ActorData actorData;
     public Vertex vertex;
+    public UnityAction groundedOnPlatform;
 
     abstract public void Death();
 }

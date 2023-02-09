@@ -10,6 +10,9 @@ public class Platform : MonoBehaviour
             return;
         
         vertex.AddActorAction.Invoke(other.GetComponent<Actor>());
+        other.GetComponent<Actor>().vertex = vertex;
+
+        other.GetComponent<Actor>().groundedOnPlatform.Invoke();
     }
 
     private void OnTriggerExit(Collider other)

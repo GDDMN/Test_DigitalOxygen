@@ -18,26 +18,19 @@ public class PlatformGraph : MonoBehaviour
 
     private void Start()
     {
-        Vertex[] path = GetPath(start, fin);
-
-        Debug.LogWarning("path: ");
-        foreach(var p in path)
-        {
-            Debug.LogWarning($"{p.name}");
-        }
     }
 
-    public Vertex[] GetPath(Vertex start, Vertex fin)
+    public List<Vertex> GetPath(Vertex start, Vertex fin)
     {
         return CalculatePath(start, fin);
     }
 
-    private Vertex[] CalculatePath(Vertex start, Vertex fin)
+    private List<Vertex> CalculatePath(Vertex start, Vertex fin)
     {
         List<WeightedVertex> weightVerts = new List<WeightedVertex>();
         List<WeightedVertex> returnTrip = new List<WeightedVertex>();
         int weight = 0;
-        Vertex[] path;
+        List<Vertex> path;
         WeightedVertex firstVert = new WeightedVertex();
         
         weightVerts.Add(firstVert);
@@ -64,14 +57,12 @@ public class PlatformGraph : MonoBehaviour
             }    
         }
 
-        path = new Vertex[returnTrip.Count];
-        
-        for(int i=0;i<path.Length;i++)
-        {
-            path[i] = returnTrip[i].vertex;
-        }
+        path = new List<Vertex>();
 
-        Array.Reverse(path);
+        foreach (var rt in returnTrip)
+            path.Add(rt.vertex);
+
+        path.Reverse();
         return path;
     }
 
@@ -79,18 +70,22 @@ public class PlatformGraph : MonoBehaviour
     {
         List<WeightedVertex> wv = new List<WeightedVertex>();
 
+        List<Vertex> vertexes = new List<Vertex>();
+
+        foreach(var v in _allWeightVertexes)
+        {
+            vertexes.Add(v.vertex);
+        }
+
         foreach (var v in weightVertex.vertex.GetReachable())
         {
-            if (_allWeightVertexes.Find(w => w.vertex == v) != null)
+            if (vertexes.Find(w => w == v) != null)
                 continue;
 
             WeightedVertex vertex = new WeightedVertex();
             vertex.vertex = v;
             vertex.weight = weight;
             wv.Add(vertex);
-
-            if (v == fin)
-                break;
         }
 
         return wv;
