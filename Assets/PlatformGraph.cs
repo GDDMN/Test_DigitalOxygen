@@ -29,6 +29,11 @@ public class PlatformGraph : MonoBehaviour
 
     public Vertex[] GetPath(Vertex start, Vertex fin)
     {
+        return CalculatePath(start, fin);
+    }
+
+    private Vertex[] CalculatePath(Vertex start, Vertex fin)
+    {
         List<WeightedVertex> weightVerts = new List<WeightedVertex>();
         List<WeightedVertex> returnTrip = new List<WeightedVertex>();
         int weight = 0;
@@ -41,18 +46,22 @@ public class PlatformGraph : MonoBehaviour
 
         for (int i=0; weightVerts[i].vertex != fin; i++)
         {
-            List<WeightedVertex> reachable = GetWeightVertex(weightVerts, weightVerts[i], ref weight);
+            List<WeightedVertex> reachable = GetWeightVertex(weightVerts, weightVerts[i], weightVerts[i].weight+1);
 
             foreach(var wv in reachable)
                 weightVerts.Add(wv);
         }
 
-        returnTrip.Add(weightVerts.Last<WeightedVertex>());
-
-        for(int i=weightVerts.Count-1;i >= 0; i--)
+        int finVertIndex = weightVerts.IndexOf(weightVerts.Find(w => w.vertex == fin));
+        returnTrip.Add(weightVerts[finVertIndex]);
+        
+        for (int i=finVertIndex;i >= 0; i--)
         {
-            if (returnTrip.Last<WeightedVertex>().weight != weightVerts[i].weight)
+            if (returnTrip.Last<WeightedVertex>().weight > weightVerts[i].weight && 
+                returnTrip.Last<WeightedVertex>().vertex.GetReachable().Contains(weightVerts[i].vertex))
+            {
                 returnTrip.Add(weightVerts[i]);
+            }    
         }
 
         path = new Vertex[returnTrip.Count];
@@ -66,9 +75,8 @@ public class PlatformGraph : MonoBehaviour
         return path;
     }
 
-    private List<WeightedVertex> GetWeightVertex(List<WeightedVertex> _allWeightVertexes, WeightedVertex weightVertex, ref int weight)
+    private List<WeightedVertex> GetWeightVertex(List<WeightedVertex> _allWeightVertexes, WeightedVertex weightVertex, int weight)
     {
-        weight += 1;
         List<WeightedVertex> wv = new List<WeightedVertex>();
 
         foreach (var v in weightVertex.vertex.GetReachable())
@@ -80,6 +88,9 @@ public class PlatformGraph : MonoBehaviour
             vertex.vertex = v;
             vertex.weight = weight;
             wv.Add(vertex);
+
+            if (v == fin)
+                break;
         }
 
         return wv;
