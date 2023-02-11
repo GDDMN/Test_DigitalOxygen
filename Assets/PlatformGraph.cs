@@ -13,8 +13,6 @@ public class WeightedVertex
 public class PlatformGraph : MonoBehaviour
 {
     [SerializeField] private List<Vertex> _allVertexes = new List<Vertex>();
-    public Vertex start;
-    public Vertex fin;
 
     private void Start()
     {
