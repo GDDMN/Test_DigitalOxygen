@@ -15,7 +15,7 @@ public abstract class Node : ScriptableObject
     public Vector2 position;
     public State Update()
     {
-        if(!started)
+        if (!started)
         {
             OnStart();
             started = true;
@@ -23,7 +23,7 @@ public abstract class Node : ScriptableObject
 
         state = OnUpdate();
 
-        if(state == State.FAILURE || state == State.SUCCESS)
+        if (state == State.FAILURE || state == State.SUCCESS)
         {
             OnStop();
             started = false;

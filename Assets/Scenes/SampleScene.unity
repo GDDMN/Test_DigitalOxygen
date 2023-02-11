@@ -1684,6 +1684,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1246924913}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1246924913}
@@ -1692,9 +1696,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 38903370}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _behaviourTree
       value: 
       objectReference: {fileID: 11400000, guid: d15d2615b7630f742b9f075c8215a9ca, type: 2}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: actorMovements
+      value: 
+      objectReference: {fileID: 901670368}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _actorMovements
       value: 
@@ -4044,6 +4056,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1246924913}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1246924913}
@@ -4051,6 +4067,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 38903370}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: actorMovements
+      value: 
+      objectReference: {fileID: 672168467}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _actorMovements
       value: 
@@ -8993,6 +9013,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1246924913}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1246924913}
@@ -9000,6 +9024,14 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 38903370}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: _behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: actorMovements
+      value: 
+      objectReference: {fileID: 1808431284}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _actorMovements
       value: 

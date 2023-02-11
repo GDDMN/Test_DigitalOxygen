@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6913912359570299603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcb681e2c1da8e4fba4a955f1807025, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7ee44e70c990c154fa9ebd034e4f26ae
+  position: {x: 0, y: 0}
+  children: []
 --- !u!114 &-6625742199098776751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,7 +33,23 @@ MonoBehaviour:
   started: 0
   guid: b1c10122cf3fd7b4c98d30bd381f358c
   position: {x: 279, y: 185.504}
-  child: {fileID: 0}
+  child: {fileID: 9124898377836696883}
+--- !u!114 &-2736309820999446205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ca69cc341cc4fb01698d59fccb4f, type: 3}
+  m_Name: PathFindingNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 9a51faed9b9b49c47b0aff3ac375e70f
+  position: {x: 524, y: 56.231995}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,3 +66,23 @@ MonoBehaviour:
   treeState: 0
   nodes:
   - {fileID: -6625742199098776751}
+  - {fileID: -2736309820999446205}
+  - {fileID: 9124898377836696883}
+  - {fileID: -6913912359570299603}
+--- !u!114 &9124898377836696883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e31772a381f6874dae0f2df1699ebca, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 9adfa18a8e5a68c40946e336c601c98f
+  position: {x: 405.6, y: 185.59996}
+  child: {fileID: 0}
