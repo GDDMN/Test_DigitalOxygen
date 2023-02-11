@@ -9,7 +9,6 @@ public class EnemyController : Actor
 
     private void Awake()
     {
-        behaviourTree.Init(this);
     }
 
     private void Start()

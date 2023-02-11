@@ -4068,6 +4068,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 38903370}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: actorMovements
       value: 
       objectReference: {fileID: 672168467}
@@ -9024,6 +9028,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 38903370}
+    - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
     - target: {fileID: 10345481187189253, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _behaviourTree
       value: 
