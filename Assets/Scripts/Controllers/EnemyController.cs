@@ -9,6 +9,7 @@ public class EnemyController : Actor
 
     private void Awake()
     {
+        behaviourTree = behaviourTree.Clone();
     }
 
     private void Start()
