@@ -21,4 +21,8 @@ public class RootNode : Node
         node.child = child.Clone();
         return node;
     }
+
+    public override void SetActor(ref Actor actor)
+    {
+    }
 }

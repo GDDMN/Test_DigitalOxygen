@@ -13,6 +13,7 @@ public abstract class Node : ScriptableObject
     public bool started = false;
     public string guid;
     public Vector2 position;
+
     public State Update()
     {
         if (!started)
@@ -36,8 +37,8 @@ public abstract class Node : ScriptableObject
     {
         return Instantiate(this);
     }
-    
 
+    public abstract void SetActor(ref Actor actor);
     protected abstract void OnStart();
     protected abstract void OnStop();
     protected abstract State OnUpdate();

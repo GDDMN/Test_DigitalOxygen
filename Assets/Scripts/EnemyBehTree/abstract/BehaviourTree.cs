@@ -9,6 +9,19 @@ public class BehaviourTree : ScriptableObject
     public Node rootNode;
     public Node.State treeState = Node.State.RUNNING;
     public List<Node> nodes = new List<Node>();
+    public Actor actor;
+
+    public void SetActor(ref Actor actor)
+    {
+        this.actor = actor;
+        SetActorForAllNodes();
+    }
+
+    private void SetActorForAllNodes()
+    {
+        foreach (var node in nodes)
+            node.SetActor(ref actor);
+    }
 
     public Node.State Update()
     {

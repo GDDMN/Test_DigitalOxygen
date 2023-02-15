@@ -1,6 +1,11 @@
 ﻿public class SequencerNode : CompositeNode
 {
     private int _current;
+
+    public override void SetActor(ref Actor actor)
+    {
+    }
+
     protected override void OnStart()
     {
         _current = 0;

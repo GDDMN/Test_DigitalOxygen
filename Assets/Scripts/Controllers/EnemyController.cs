@@ -9,20 +9,20 @@ public class EnemyController : Actor
 
     private void Awake()
     {
+        Actor actor = this as Actor;
+        behaviourTree.SetActor(ref actor);
         behaviourTree = behaviourTree.Clone();
     }
 
     private void Start()
     {
-
+        
     }
 
     private void Update()
     {
         behaviourTree.Update();
     }
-
-
 
     private void FixedUpdate()
     {

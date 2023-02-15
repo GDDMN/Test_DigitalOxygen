@@ -16,4 +16,9 @@ public class DebugLogNode : ActionNode
         Debug.Log($"OnUpdate {message}");
         return State.SUCCESS;
     }
+
+    public override void SetActor(ref Actor actor)
+    {
+
+    }
 }

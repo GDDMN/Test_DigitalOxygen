@@ -35,9 +35,8 @@ MonoBehaviour:
   - {fileID: -6625742199098776751}
   - {fileID: 9124898377836696883}
   - {fileID: 225015273688696042}
-  - {fileID: 6176932970970229844}
-  - {fileID: 9068706294879992134}
-  - {fileID: 1468149137032702313}
+  - {fileID: 3680460988663633049}
+  actor: {fileID: 0}
 --- !u!114 &225015273688696042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,11 +53,8 @@ MonoBehaviour:
   started: 0
   guid: c3ca01b6176df7341bd197c3057b3856
   position: {x: 545.76, y: 184.79999}
-  children:
-  - {fileID: 6176932970970229844}
-  - {fileID: 9068706294879992134}
-  - {fileID: 1468149137032702313}
---- !u!114 &1468149137032702313
+  children: []
+--- !u!114 &3680460988663633049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,48 +63,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e38769156b641c438f8b92887588f83, type: 3}
-  m_Name: DebugLogNode
+  m_Script: {fileID: 11500000, guid: 23c1ca69cc341cc4fb01698d59fccb4f, type: 3}
+  m_Name: PathFindingNode
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: a9fabbfbcb6f27b499fa56e4b6c82d23
-  position: {x: 748, y: 300}
-  message: 2
---- !u!114 &6176932970970229844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e38769156b641c438f8b92887588f83, type: 3}
-  m_Name: DebugLogNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: ae4360035e74a48418cbc3966c56fad0
-  position: {x: 748, y: 75.36}
-  message: 1
---- !u!114 &9068706294879992134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a994a29b1df52214dae215f905b5fcd8, type: 3}
-  m_Name: WaitNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 3b5c9aaf85b5c01439cd280611736f99
-  position: {x: 748, y: 185.59996}
-  duration: 1
+  guid: d3cf8492fbaecf54b82544e18a1631d5
+  position: {x: 0, y: 0}
 --- !u!114 &9124898377836696883
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class RepeatNode : DecoratorNode
 {
+    public override void SetActor(ref Actor actor)
+    {
+    }
+
     protected override void OnStart()
     {
     }
