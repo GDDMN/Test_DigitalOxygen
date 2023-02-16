@@ -6,22 +6,27 @@ public class EnemyController : Actor
     public ActorMovements actorMovements;
     public Tilemap tilemap;
     public BehaviourTree behaviourTree;
-    public UnityEngine.Transform nextStepPont;
-
+    
     private void Awake()
     {
         Actor actor = this as Actor;
         behaviourTree.SetActor(ref actor);
         behaviourTree = behaviourTree.Clone();
+
+        player = FindObjectOfType<PlayerController>();
+        tilemap = FindObjectOfType<Tilemap>();
     }
 
     private void Start()
     {
-        
+        Dead = false;
     }
 
     private void Update()
     {
+        if (Dead)
+            return;
+
         behaviourTree.Update();
     }
 
@@ -42,9 +47,9 @@ public class EnemyController : Actor
     }
     public override void Death()
     {
-        if(vertex != null)
+        if (vertex != null)
             vertex.RemoveActorAction(this);
-        
+
         Destroy(gameObject);
     }
 }

@@ -41,6 +41,7 @@ public class ActorHurt : MonoBehaviour, IInteractable
     private void Die()
     {
         _IsDead = true;
+        _actor.Dead = _IsDead;
         _animationController.SetBool("Death", _IsDead);
     }
 

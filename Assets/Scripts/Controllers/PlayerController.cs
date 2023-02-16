@@ -7,9 +7,17 @@ public class PlayerController : Actor
 
     private float _direction;
 
+    private void Start()
+    {
+        Dead = false;
+    }
+
 
     private void Update()
     {
+        if (Dead)
+            return;
+
         Run();
         Jump();
 
@@ -44,6 +52,9 @@ public class PlayerController : Actor
 
     public override void Death()
     {
+        if (vertex != null)
+            vertex.RemoveActorAction(this);
 
+        Destroy(gameObject);
     }
 }
