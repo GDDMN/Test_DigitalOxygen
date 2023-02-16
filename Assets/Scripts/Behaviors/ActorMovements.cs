@@ -13,7 +13,8 @@ public class ActorMovements : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _jumpForce;
 
-    [SerializeField] private Transform _groundCheckPoint;
+    public Transform _groundCheckPoint;
+
     [SerializeField] private ParticleSystem _landingParticle;
 
     private bool _onGround = false;

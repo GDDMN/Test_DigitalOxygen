@@ -76,7 +76,16 @@ public class PathFindingNode : ActionNode
                 if (direction != 0)
                     movementDirection = direction / Mathf.Abs(direction);
 
-                if (path[2].Y - path[0].Y > 1)
+                float distance = 2.5f;
+
+                Vector3 rayDirection = Vector3.down + (Vector3.right * direction);
+
+                Ray ray = new Ray(enemy.transform.position, rayDirection);
+
+                Debug.DrawRay(enemy.transform.position,
+                              rayDirection, Color.cyan);
+
+                if (path[2].Y - path[0].Y > 1 || (!Physics.Raycast(ray, distance)))
                     enemy.Jump();
             }
 

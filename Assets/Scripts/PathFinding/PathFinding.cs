@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class PathFinding 
 {
     private const int MOVE_STRAIGHT_COST = 10;
-    private const int MOVE_DIAGONAL_COST = 14;
+    private const int MOVE_DIAGONAL_COST = 13;
 
     private Grid<PathNode> grid;
     private List<PathNode> openList;

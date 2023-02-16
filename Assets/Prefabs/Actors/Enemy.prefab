@@ -34,6 +34,7 @@ Transform:
   - {fileID: 5550988324156652861}
   - {fileID: 2170959846777827908}
   - {fileID: 7835153651545722526}
+  - {fileID: 2230405808235742490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -81,7 +82,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorData:
     Health: 1
-  _player: {fileID: 0}
+  vertex: {fileID: 0}
+  player: {fileID: 0}
+  actorMovements: {fileID: 0}
+  tilemap: {fileID: 0}
+  behaviourTree: {fileID: 0}
+  nextStepPont: {fileID: 2230405808235742490}
+--- !u!1 &5556459438616423721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2230405808235742490}
+  m_Layer: 9
+  m_Name: NextStepPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2230405808235742490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556459438616423721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5369323220126713652}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5369323219038755542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +778,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _damage: 0.3
+  _stamina: 0
+  _punchFatigue: 0
+  _punchRecovery: 0
 --- !u!114 &4611245043949262442
 MonoBehaviour:
   m_ObjectHideFlags: 0

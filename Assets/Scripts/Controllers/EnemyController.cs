@@ -6,6 +6,7 @@ public class EnemyController : Actor
     public ActorMovements actorMovements;
     public Tilemap tilemap;
     public BehaviourTree behaviourTree;
+    public UnityEngine.Transform nextStepPont;
 
     private void Awake()
     {
