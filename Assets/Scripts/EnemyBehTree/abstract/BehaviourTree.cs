@@ -15,6 +15,8 @@ public class BehaviourTree : ScriptableObject
     {
         this.actor = actor;
         SetActorForAllNodes();
+        //foreach (var node in nodes)
+        //    node.state = Node.State.RUNNING;
     }
 
     private void SetActorForAllNodes()

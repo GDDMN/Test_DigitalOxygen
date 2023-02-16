@@ -12,6 +12,7 @@ public class EnemyController : Actor
         Actor actor = this as Actor;
         behaviourTree.SetActor(ref actor);
         behaviourTree = behaviourTree.Clone();
+        
 
         player = FindObjectOfType<PlayerController>();
         tilemap = FindObjectOfType<Tilemap>();
