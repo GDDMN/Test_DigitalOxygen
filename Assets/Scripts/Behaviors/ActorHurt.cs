@@ -19,6 +19,16 @@ public class ActorHurt : MonoBehaviour, IInteractable
         Hurt(actorAttack.Damage);
     }
 
+    private void SetHurtTrigger()
+    {
+        _actor.Hurt = true;
+    }
+
+    private void SetIdleTrigger()
+    {
+        _actor.Hurt = false;
+    }
+
     private void Hurt(float damage)
     {
         _punchEffect.Play();
@@ -41,13 +51,13 @@ public class ActorHurt : MonoBehaviour, IInteractable
     private void Die()
     {
         _IsDead = true;
-        _actor.Dead = _IsDead;
+        _actor.Hurt = _IsDead;
         _animationController.SetBool("Death", _IsDead);
     }
 
     public void Death()
     {
-        Instantiate(_deathEffect.gameObject, _amaturePosition.position, Quaternion.identity);
+        Instantiate(_deathEffect.gameObject, _amaturePosition.position + (Vector3.up * 0.5f), Quaternion.identity);
         _actor.Death();
     }
 

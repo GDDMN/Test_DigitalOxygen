@@ -36,6 +36,7 @@ MonoBehaviour:
   - {fileID: 9124898377836696883}
   - {fileID: 225015273688696042}
   - {fileID: 3680460988663633049}
+  - {fileID: 2836387737595834618}
   actor: {fileID: 0}
 --- !u!114 &225015273688696042
 MonoBehaviour:
@@ -53,7 +54,25 @@ MonoBehaviour:
   started: 0
   guid: c3ca01b6176df7341bd197c3057b3856
   position: {x: 545.76, y: 184.79999}
-  children: []
+  children:
+  - {fileID: 3680460988663633049}
+--- !u!114 &2836387737595834618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e965aab0d4d36324985d193865e8b826, type: 3}
+  m_Name: FingtingNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c2c9401cba1c05940b6e9b6f4aadb74e
+  position: {x: 0, y: 0}
+  enemy: {fileID: 0}
 --- !u!114 &3680460988663633049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +88,8 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d3cf8492fbaecf54b82544e18a1631d5
-  position: {x: 0, y: 0}
+  position: {x: 716, y: 184.79999}
+  enemy: {fileID: 0}
 --- !u!114 &9124898377836696883
 MonoBehaviour:
   m_ObjectHideFlags: 0

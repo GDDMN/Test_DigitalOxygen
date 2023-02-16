@@ -9,13 +9,13 @@ public class PlayerController : Actor
 
     private void Start()
     {
-        Dead = false;
+        Hurt = false;
     }
 
 
     private void Update()
     {
-        if (Dead)
+        if (Hurt)
             return;
 
         Run();

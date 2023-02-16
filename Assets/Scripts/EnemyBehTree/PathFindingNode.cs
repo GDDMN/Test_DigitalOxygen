@@ -47,7 +47,6 @@ public class PathFindingNode : ActionNode
         if (graph.Contains(enemy.vertex))
             graph.Remove(enemy.vertex);
 
-
         if (graph.Count > 0)
         {
             pathFinding.GetGrid().GetXY(graph[0].transform.position - new Vector3(0f, 1f, 0f), out int xEnd, out int yEnd);
@@ -61,46 +60,36 @@ public class PathFindingNode : ActionNode
 
         if (path != null)
         {
-            for (int i = 0; i < path.Count - 1; i++)
-            {
-                Debug.DrawLine(new Vector3(path[i].X - 11, path[i].Y),
-                    new Vector3(path[i + 1].X - 11, path[i + 1].Y), Color.green);
-            }
-
             float movementDirection = 0;
 
-            if (path.Count > 3)
+            if (path.Count > 2)
             {
                 float direction = path[1].X - path[0].X;
 
                 if (direction != 0)
                     movementDirection = direction / Mathf.Abs(direction);
 
+                enemy.Run(movementDirection);
+
                 float distance = 2.5f;
                 Vector3 rayDirection = Vector3.down + (Vector3.right * direction);
-
                 Ray ray = new Ray(enemy.transform.position, rayDirection);
 
-                Debug.DrawRay(enemy.transform.position,
-                              rayDirection, Color.cyan);
-
-                if (path[2].Y - path[0].Y > 1 || (!Physics.Raycast(ray, distance)))
-                    enemy.Jump();
-            }
-            //else
-            //{
-            //    return State.SUCCESS;
-            //}
-
-            enemy.Run(movementDirection);
-
-            if (graph.Count > 0)
-            {
-                for (int i = 0; i < graph.Count - 1; i++)
+                
+                if(graph.Count > 0)
                 {
-                    Debug.DrawLine(graph[i].transform.position,
-                                   graph[1 + i].transform.position, Color.green);
+                    if (((!Physics.Raycast(ray, distance)) && graph[0].transform.position.y > enemy.transform.position.y) || path[2].Y - path[0].Y > 1)
+                        enemy.Jump();
+                }else
+                {
+                    if (path[2].Y - path[0].Y > 1 || (!Physics.Raycast(ray, distance)))
+                        enemy.Jump();
                 }
+            }
+            else
+            {
+                enemy.Run(0f);
+                return State.SUCCESS;
             }
         }
         return State.RUNNING;

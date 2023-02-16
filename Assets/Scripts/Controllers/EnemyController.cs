@@ -4,6 +4,7 @@ public class EnemyController : Actor
 {
     public PlayerController player;
     public ActorMovements actorMovements;
+    public ActorAttack actorAttack;
     public Tilemap tilemap;
     public BehaviourTree behaviourTree;
     
@@ -20,12 +21,12 @@ public class EnemyController : Actor
 
     private void Start()
     {
-        Dead = false;
+        Hurt = false;
     }
 
     private void Update()
     {
-        if (Dead)
+        if (Hurt)
             return;
 
         behaviourTree.Update();
@@ -46,8 +47,15 @@ public class EnemyController : Actor
     {
         actorMovements.Jump();
     }
+
+    public void Attack()
+    {
+        actorAttack.StartAttack();
+    }
+
     public override void Death()
     {
+        Hurt = true;
         if (vertex != null)
             vertex.RemoveActorAction(this);
 

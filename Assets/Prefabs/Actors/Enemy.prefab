@@ -83,11 +83,12 @@ MonoBehaviour:
   actorData:
     Health: 1
   vertex: {fileID: 0}
+  Hurt: 0
   player: {fileID: 0}
-  actorMovements: {fileID: 0}
+  actorMovements: {fileID: 4611245043949262442}
+  actorAttack: {fileID: 4119581939967236840}
   tilemap: {fileID: 0}
-  behaviourTree: {fileID: 0}
-  nextStepPont: {fileID: 2230405808235742490}
+  behaviourTree: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
 --- !u!1 &5556459438616423721
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +829,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _walkSpeed: 10
+  _walkSpeed: 7
   _jumpSpeed: 1
   _jumpForce: 0.7
   _groundCheckPoint: {fileID: 7835153651545722526}
