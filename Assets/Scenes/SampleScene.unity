@@ -4516,6 +4516,10 @@ PrefabInstance:
       value: 0.21420765
       objectReference: {fileID: 0}
     - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: _damage
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _attackRange
       value: 0.5
       objectReference: {fileID: 0}
@@ -4717,7 +4721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5369323220126713654, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5407746116896206451, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7614,6 +7618,10 @@ PrefabInstance:
       value: 0.21420765
       objectReference: {fileID: 0}
     - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: _damage
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _attackRange
       value: 0.5
       objectReference: {fileID: 0}
@@ -7799,7 +7807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5369323220126713654, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5407746116896206451, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16071,6 +16079,10 @@ PrefabInstance:
     - target: {fileID: 3948870535645681711, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.21420765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
+      propertyPath: _damage
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4119581939967236840, guid: c7c25af7967d022469cf8c0248efdfd3, type: 3}
       propertyPath: _attackRange

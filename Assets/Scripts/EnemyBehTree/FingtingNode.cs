@@ -5,7 +5,7 @@ public class FingtingNode : ActionNode
     public EnemyController enemy;
     private float attackTime = 0.0f;
     private float coolDownTme = 1.0f;
-    private float attackSpeed = 1.0f;
+    private float attackSpeed = 2.0f;
 
     public override void SetActor(ref Actor actor)
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFindingNode : ActionNode
+public class PathFindingNode : DecoratorNode
 {
     private List<Vertex> graph = new List<Vertex>();
     private PlatformGraph platformGraph;

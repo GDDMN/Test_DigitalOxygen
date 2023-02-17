@@ -5,7 +5,6 @@ public class ActorHurt : MonoBehaviour, IInteractable
 {
     [SerializeField] private Actor _actor;
     [SerializeField] private Animator _animationController;
-    [SerializeField] private float _cooldownSpeed;
 
     [Space(1)]
     [SerializeField] private ParticleSystem _deathEffect;

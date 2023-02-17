@@ -56,6 +56,7 @@ MonoBehaviour:
   position: {x: 545.76, y: 184.79999}
   children:
   - {fileID: 3680460988663633049}
+  - {fileID: 2836387737595834618}
 --- !u!114 &2836387737595834618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +72,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c2c9401cba1c05940b6e9b6f4aadb74e
-  position: {x: 0, y: 0}
+  position: {x: 724.8, y: 261.59998}
   enemy: {fileID: 0}
 --- !u!114 &3680460988663633049
 MonoBehaviour:
@@ -88,7 +89,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d3cf8492fbaecf54b82544e18a1631d5
-  position: {x: 716, y: 184.79999}
+  position: {x: 724.8, y: 107.99999}
   enemy: {fileID: 0}
 --- !u!114 &9124898377836696883
 MonoBehaviour:
