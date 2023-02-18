@@ -9,7 +9,8 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private List<EnemyController> _enemys = new List<EnemyController>();
     [SerializeField] private List<EnemySpawner> _spawners = new List<EnemySpawner>();
 
-    private void Start()
+    
+    public void StartInitialization()
     {
         foreach (var spawner in _spawners)
             SpawnEnemy(_spawners.IndexOf(spawner));
