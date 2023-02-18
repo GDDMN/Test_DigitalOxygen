@@ -24,7 +24,7 @@ public class PathFindingNode : ActionNode
     protected override void OnStart()
     {
         platformGraph = FindObjectOfType<PlatformGraph>();
-        pathFinding = new PathFinding(34, 20, enemy.tilemap);
+        pathFinding = new PathFinding(34, 25, enemy.tilemap);
 
         enemy.groundedOnPlatform += FindGraph;
         enemy.player.groundedOnPlatform += FindGraph;
