@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    public bool Started;
     public int EnemyCount;
 
     [SerializeField] private List<EnemyController> _enemys = new List<EnemyController>();

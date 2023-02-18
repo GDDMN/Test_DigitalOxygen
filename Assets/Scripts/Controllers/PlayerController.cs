@@ -7,6 +7,8 @@ public class PlayerController : Actor
     public ActorHurt actorHurt;
 
     private float _direction;
+    [HideInInspector]public bool GameStarted = false;
+
 
     private void Start()
     {
@@ -16,6 +18,9 @@ public class PlayerController : Actor
 
     private void Update()
     {
+        if (!GameStarted)
+            return;
+
         if (Hurt)
             return;
 
