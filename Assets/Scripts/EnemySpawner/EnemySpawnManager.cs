@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnManager : MonoBehaviour
 {
     public int EnemyCount;
+    public DeadEnemyCountUI deadEnemyCount;
 
     [SerializeField] private List<EnemyController> _enemys = new List<EnemyController>();
     [SerializeField] private List<EnemySpawner> _spawners = new List<EnemySpawner>();
@@ -31,6 +33,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         _spawners[spawnerNum].Instant(_enemys[enemyType]);
         _spawners[spawnerNum].enemy.OnDeath += FindEmptySpawner;
+        _spawners[spawnerNum].enemy.OnDeath += deadEnemyCount.Increase;
     }
 
 }
