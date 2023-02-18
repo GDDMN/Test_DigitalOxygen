@@ -11,24 +11,26 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private List<EnemyController> _enemys = new List<EnemyController>();
     [SerializeField] private List<EnemySpawner> _spawners = new List<EnemySpawner>();
 
+    private int count;
     
     public void StartInitialization()
     {
+        count = EnemyCount;
         foreach (var spawner in _spawners)
             SpawnEnemy(_spawners.IndexOf(spawner));
     }
 
     private void FindEmptySpawner()
     {
-        if (EnemyCount <= 0)
-            return;
-
         int spawnerNum = Random.Range(0, _spawners.Count);
         SpawnEnemy(spawnerNum);    
     }
 
     private void SpawnEnemy(int spawnerNum)
     {
+        if (EnemyCount <= 0)
+            return;
+
         EnemyCount--;
         int enemyType = Random.Range(0, _enemys.Count);
 
@@ -40,14 +42,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void CheckEnemyDeath()
     {
-        foreach (var spawn in _spawners)
-            if (spawn.enemy != null)
-                return;
-
-        if (EnemyCount > 0)
-            return;
-
-        OnEveryEnemyDeth.Invoke();
+        if(deadEnemyCount.count == count)
+            OnEveryEnemyDeth.Invoke();
     }
 
 }
