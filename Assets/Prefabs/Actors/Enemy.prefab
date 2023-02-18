@@ -84,9 +84,10 @@ MonoBehaviour:
     Health: 1
   vertex: {fileID: 0}
   Hurt: 0
-  player: {fileID: 0}
   actorMovements: {fileID: 4611245043949262442}
   actorAttack: {fileID: 4119581939967236840}
+  actorHurt: {fileID: 2077453476464107792}
+  player: {fileID: 0}
   tilemap: {fileID: 0}
   behaviourTree: {fileID: 11400000, guid: a8f7dc283acfc6b49bf6e18116251bed, type: 2}
 --- !u!1 &5556459438616423721
@@ -756,7 +757,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actor: {fileID: 10345481187189253}
   _animationController: {fileID: 2011207620958840647}
-  _cooldownSpeed: 0
   _deathEffect: {fileID: 19832984, guid: 65221b7881c819a429dbe5e646b0bd6b, type: 3}
   _punchEffect: {fileID: 5407746116881054639}
   _amaturePosition: {fileID: 3583113964354629027}

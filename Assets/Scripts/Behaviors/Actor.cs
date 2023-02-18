@@ -11,11 +11,13 @@ public struct ActorData
 
 public abstract class Actor : MonoBehaviour
 {
+    [Header("Actor data")]
     public ActorData actorData;
-    public Vertex vertex;
-    public UnityAction groundedOnPlatform;
-    public UnityAction getHurt;
-    public bool Hurt;
+
+    [HideInInspector] public Vertex vertex;
+    [HideInInspector] public UnityAction groundedOnPlatform;
+    [HideInInspector] public UnityAction getHurt;
+    [HideInInspector] public bool Hurt;
 
     abstract public void Death();
 }

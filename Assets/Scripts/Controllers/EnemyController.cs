@@ -1,14 +1,17 @@
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class EnemyController : Actor
 {
-    public ActorMovements actorMovements;
-    public ActorAttack actorAttack;
-    public ActorHurt actorHurt;
+    [Header("Actor movement types")]
+    [SerializeField] private ActorMovements actorMovements;
+    [SerializeField] private ActorAttack actorAttack;
+    [SerializeField] private ActorHurt actorHurt;
+    [Header("Behavior")]
+    [SerializeField] private BehaviourTree behaviourTree;
 
-    public PlayerController player;
-    public Tilemap tilemap;
-    public BehaviourTree behaviourTree;
+    [HideInInspector] public PlayerController player;
+    [HideInInspector] public Tilemap tilemap;
     
     private void Awake()
     {
