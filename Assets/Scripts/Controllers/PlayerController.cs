@@ -62,6 +62,7 @@ public class PlayerController : Actor
         if (vertex != null)
             vertex.RemoveActorAction(this);
 
+        OnDeath.Invoke();
         Destroy(gameObject);
     }
 }

@@ -14,5 +14,11 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnEffect.Play();
         this.enemy = Instantiate(enemy, transform.position, Quaternion.identity);
+        this.enemy.OnDeath += ClearEnemyField;
+    }
+
+    private void ClearEnemyField()
+    {
+        enemy = null;
     }
 }
