@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFindingNode : DecoratorNode
+public class PathFindingNode : ActionNode
 {
     private List<Vertex> graph = new List<Vertex>();
     private PlatformGraph platformGraph;
@@ -39,7 +39,10 @@ public class PathFindingNode : DecoratorNode
     protected override State OnUpdate()
     {
         if (enemy.player == null)
+        {
+            enemy.Run(0f);
             return State.FAILURE;
+        }
 
         pathFinding.GetGrid().GetXY(enemy.transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
         List<PathNode> path;

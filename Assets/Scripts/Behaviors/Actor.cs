@@ -14,6 +14,7 @@ public abstract class Actor : MonoBehaviour
     public ActorData actorData;
     public Vertex vertex;
     public UnityAction groundedOnPlatform;
+    public UnityAction getHurt;
     public bool Hurt;
 
     abstract public void Death();

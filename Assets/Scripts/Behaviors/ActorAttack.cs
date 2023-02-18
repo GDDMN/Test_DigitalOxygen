@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActorAttack : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class ActorAttack : MonoBehaviour
     [SerializeField] private float _punchFatigue;
     [SerializeField] private float _punchRecovery;
 
+    public UnityAction OnStaminaChanges;
+
     private int _punchType;
     public float Damage => _damage;
+    public float Stamina => _stamina;
 
     private void OnDrawGizmosSelected()
     {
@@ -24,7 +28,10 @@ public class ActorAttack : MonoBehaviour
     private void Update()
     {
         if (_stamina > 0.0f)
+        {
+            OnStaminaChanges.Invoke();
             _stamina -= _punchRecovery * Time.deltaTime;
+        }
     }
 
     public void Attack()
@@ -39,11 +46,14 @@ public class ActorAttack : MonoBehaviour
     {
         int punch;
 
-        if (_stamina > 1.0f)
+        if (_stamina + _punchFatigue > 1.0f)
             return;
 
         if (_stamina < 1.5f)
             _stamina += _punchFatigue;
+
+        if(OnStaminaChanges != null)
+            OnStaminaChanges.Invoke();
 
         do
         {

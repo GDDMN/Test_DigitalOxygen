@@ -32,6 +32,9 @@ public class ActorHurt : MonoBehaviour, IInteractable
     {
         _punchEffect.Play();
         TakeDamageCalculation(damage);
+        
+        if(_actor.getHurt != null)
+            _actor.getHurt.Invoke();
 
         if (_IsDead)
             return;

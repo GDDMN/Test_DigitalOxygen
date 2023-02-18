@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerController : Actor
 {
     [SerializeField]private ActorMovements _actorMovements;
-    [SerializeField]private ActorAttack _actorAttack;
+    public ActorAttack actorAttack;
+    public ActorHurt actorHurt;
 
     private float _direction;
 
@@ -20,9 +21,7 @@ public class PlayerController : Actor
 
         Run();
         Jump();
-
-        if(!_actorMovements.IsJumping && _actorMovements.OnGround && Mathf.Abs(_direction) < .01f)
-            Attack();
+        Attack();
     }
 
     private void FixedUpdate()
@@ -40,8 +39,11 @@ public class PlayerController : Actor
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Fire1"))
-            _actorAttack.StartAttack();
+        if (!_actorMovements.IsJumping && _actorMovements.OnGround && Mathf.Abs(_direction) < .01f)
+        {
+            if (Input.GetButtonDown("Fire1"))
+                actorAttack.StartAttack();
+        }
     }
 
     private void Jump()

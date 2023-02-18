@@ -2,9 +2,11 @@ using UnityEngine.Tilemaps;
 
 public class EnemyController : Actor
 {
-    public PlayerController player;
     public ActorMovements actorMovements;
     public ActorAttack actorAttack;
+    public ActorHurt actorHurt;
+
+    public PlayerController player;
     public Tilemap tilemap;
     public BehaviourTree behaviourTree;
     
@@ -50,7 +52,10 @@ public class EnemyController : Actor
 
     public void Attack()
     {
-        actorAttack.StartAttack();
+        if (!actorMovements.IsJumping && actorMovements.OnGround )
+        {
+            actorAttack.StartAttack();
+        }
     }
 
     public override void Death()
