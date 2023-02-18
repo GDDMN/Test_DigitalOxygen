@@ -17,6 +17,7 @@ public abstract class Actor : MonoBehaviour
     [HideInInspector] public Vertex vertex;
     [HideInInspector] public UnityAction groundedOnPlatform;
     [HideInInspector] public UnityAction getHurt;
+    [HideInInspector] public UnityAction OnDeath;
     [HideInInspector] public bool Hurt;
 
     abstract public void Death();

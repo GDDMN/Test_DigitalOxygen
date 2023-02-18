@@ -67,6 +67,7 @@ public class EnemyController : Actor
         if (vertex != null)
             vertex.RemoveActorAction(this);
 
+        OnDeath.Invoke();
         Destroy(gameObject);
     }
 }
