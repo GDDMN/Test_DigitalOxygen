@@ -96,7 +96,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &4414570430294770312
 MonoBehaviour:
@@ -2378,45 +2378,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2428545954061975965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8873700501072004874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b87630d6d09c214a93fed3df26fd6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actor: {fileID: 4414570430294770312}
-  _animationController: {fileID: 2778241511586252746}
-  _deathEffect: {fileID: 19872744, guid: cca79b260878071418290367024a6716, type: 3}
-  _punchEffect: {fileID: 8533011993130031906}
-  _amaturePosition: {fileID: 927374738089692462}
---- !u!114 &309838739344210533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8873700501072004874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationController: {fileID: 2778241511586252746}
-  _attackPoint: {fileID: 2542204172599333577}
-  _attackRange: 0.5
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _damage: 0.1
-  _stamina: 0
-  _punchFatigue: 0
-  _punchRecovery: 0
 --- !u!114 &187211285437937383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,3 +2430,42 @@ MonoBehaviour:
   _jumpForce: 5
   _groundCheckPoint: {fileID: 5898444443771760147}
   _landingParticle: {fileID: 19875214, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+--- !u!114 &309838739344210533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873700501072004874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0345f4be9cd04564a944544f9527ab2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationController: {fileID: 2778241511586252746}
+  _attackPoint: {fileID: 2542204172599333577}
+  _attackRange: 0.5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _damage: 0.1
+  _stamina: 0
+  _punchFatigue: 0
+  _punchRecovery: 0
+--- !u!114 &2428545954061975965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873700501072004874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b87630d6d09c214a93fed3df26fd6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actor: {fileID: 4414570430294770312}
+  _animationController: {fileID: 2778241511586252746}
+  _deathEffect: {fileID: 19872744, guid: cca79b260878071418290367024a6716, type: 3}
+  _punchEffect: {fileID: 8533011993130031906}
+  _amaturePosition: {fileID: 927374738089692462}
