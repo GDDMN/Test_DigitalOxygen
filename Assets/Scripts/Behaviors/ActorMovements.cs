@@ -91,7 +91,14 @@ public class ActorMovements : MonoBehaviour
         float distance = 1.5f;
 
         Ray ray = new Ray(_groundCheckPoint.position, Vector3.down);
-        _onGround = Physics.Raycast(ray,distance);
+        RaycastHit hit;
+
+        _onGround = false;
+        if (Physics.Raycast(ray, out hit, distance))
+        {
+            if (hit.collider.gameObject.layer == 12)
+                _onGround = true;
+        }
 
         _animationController.SetBool("OnGround", _onGround);
     }
