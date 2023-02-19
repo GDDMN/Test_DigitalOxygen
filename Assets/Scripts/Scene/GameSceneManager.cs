@@ -5,6 +5,8 @@ public class GameSceneManager : MonoBehaviour
 {
     public PlayerController player;
     public EnemySpawnManager enemySpawner;
+    public GameObject looseWinWindow;
+
 
     private void Start()
     {
@@ -24,17 +26,17 @@ public class GameSceneManager : MonoBehaviour
         enemySpawner.OnEveryEnemyDeth -= Win;
     }
 
-    public void Win()
+    private void Win()
     {
-        RestartScene();
+        looseWinWindow.SetActive(true);
     }
 
-    public void Lose()
+    private void Lose()
     {
-        RestartScene();
+        looseWinWindow.SetActive(true);
     }
 
-    private void RestartScene()
+    public void RestartScene()
     {
         SceneManager.LoadScene("SampleScene");
     }
