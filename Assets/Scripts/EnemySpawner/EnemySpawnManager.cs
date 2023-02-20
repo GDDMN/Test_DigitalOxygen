@@ -15,6 +15,7 @@ public class EnemySpawnManager : MonoBehaviour
     
     public void StartInitialization()
     {
+        deadEnemyCount.allEnemys = EnemyCount;
         count = EnemyCount;
         foreach (var spawner in _spawners)
             SpawnEnemy(_spawners.IndexOf(spawner));

@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class PlayButtonScript : MonoBehaviour
 {
     public EnemySpawnManager spawnManager;
-    public InputField inputField;
+    public Slider slider;
     public PlayerController player;
+    public Image menuImage;
 
     public HealthbarUI healthBar;
 
     public void StartGame()
     {
-        string value = inputField.text;
-        int enemyCount = Int32.Parse(value);
+        int enemyCount = (int)slider.value;
         if (enemyCount <= 0)
             return;
 
@@ -22,7 +22,8 @@ public class PlayButtonScript : MonoBehaviour
         player.GameStarted = true;
 
         healthBar.gameObject.SetActive(true);
-        inputField.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(false);
+        slider.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 }
