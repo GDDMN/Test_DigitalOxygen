@@ -29,15 +29,6 @@ public class Vertex : MonoBehaviour
         RemoveActorAction -= RemoveActor;
     }
 
-    private void Update()
-    {
-        if (reachable.Count == 0)
-            return; 
-
-        foreach (var vertex in reachable)
-            Debug.DrawLine(transform.position, vertex.transform.position, Color.white);
-    }
-
     private void AddActor(Actor actor)
     {
         actor.vertex = this;

@@ -19,6 +19,8 @@ public class PathFindingNode : ActionNode
             return;
 
         graph = platformGraph.GetPath(enemy.vertex, enemy.player.vertex);
+        
+
     }
 
     protected override void OnStart()
@@ -27,13 +29,13 @@ public class PathFindingNode : ActionNode
         pathFinding = new PathFinding(34, 30, enemy.tilemap);
 
         enemy.groundedOnPlatform += FindGraph;
-        enemy.player.groundedOnPlatform += FindGraph;
+        //enemy.player.groundedOnPlatform += FindGraph;
     }
 
     protected override void OnStop()
     {
         enemy.groundedOnPlatform -= FindGraph;
-        enemy.player.groundedOnPlatform -= FindGraph;
+        //enemy.player.groundedOnPlatform -= FindGraph;
     }
 
     protected override State OnUpdate()
@@ -44,22 +46,10 @@ public class PathFindingNode : ActionNode
             return State.FAILURE;
         }
 
-        pathFinding.GetGrid().GetXY(enemy.transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
-        List<PathNode> path;
-
         if (graph.Contains(enemy.vertex))
             graph.Remove(enemy.vertex);
 
-        if (graph.Count > 0)
-        {
-            pathFinding.GetGrid().GetXY(graph[0].transform.position - new Vector3(0f, 1f, 0f), out int xEnd, out int yEnd);
-            path = pathFinding.FindPath(xStart, yStart, xEnd, yEnd);
-        }
-        else
-        {
-            pathFinding.GetGrid().GetXY(enemy.player.transform.position - new Vector3(0f, 1f, 0f), out int xEnd, out int yEnd);
-            path = pathFinding.FindPath(xStart, yStart, xEnd, yEnd);
-        }
+        List<PathNode> path = FindPathAStar();
 
         if (path != null)
         {
@@ -96,5 +86,21 @@ public class PathFindingNode : ActionNode
             }
         }
         return State.RUNNING;
+    }
+
+    private List<PathNode> FindPathAStar()
+    {
+        List<PathNode> path;
+        pathFinding.GetGrid().GetXY(enemy.transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
+
+        int xEnd, yEnd;
+
+        if (graph.Count > 0)
+            pathFinding.GetGrid().GetXY(graph[0].transform.position - new Vector3(0f, 1f, 0f), out xEnd, out yEnd);
+        else
+            pathFinding.GetGrid().GetXY(enemy.player.transform.position - new Vector3(0f, 1f, 0f), out xEnd, out yEnd);
+
+        path = pathFinding.FindPath(xStart, yStart, xEnd, yEnd);
+        return path;
     }
 }
