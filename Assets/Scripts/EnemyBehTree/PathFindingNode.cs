@@ -5,8 +5,9 @@ public class PathFindingNode : ActionNode
 {
     private List<Vertex> graph = new List<Vertex>();
     private PlatformGraph platformGraph;
-    private PathFinding pathFinding;
+    private List<Vector3> path;
     [SerializeField] private EnemyController enemy;
+
 
     public override void SetActor(ref Actor actor)
     {        
@@ -19,23 +20,20 @@ public class PathFindingNode : ActionNode
             return;
 
         graph = platformGraph.GetPath(enemy.vertex, enemy.player.vertex);
-        
-
     }
 
     protected override void OnStart()
     {
         platformGraph = FindObjectOfType<PlatformGraph>();
-        pathFinding = new PathFinding(34, 30, enemy.tilemap);
 
         enemy.groundedOnPlatform += FindGraph;
-        //enemy.player.groundedOnPlatform += FindGraph;
+        enemy.player.groundedOnPlatform += FindGraph;
     }
 
     protected override void OnStop()
     {
         enemy.groundedOnPlatform -= FindGraph;
-        //enemy.player.groundedOnPlatform -= FindGraph;
+        enemy.player.groundedOnPlatform -= FindGraph;
     }
 
     protected override State OnUpdate()
@@ -49,7 +47,7 @@ public class PathFindingNode : ActionNode
         if (graph.Contains(enemy.vertex))
             graph.Remove(enemy.vertex);
 
-        List<PathNode> path = FindPathAStar();
+        path = FindPathAStar();
 
         if (path != null)
         {
@@ -57,7 +55,7 @@ public class PathFindingNode : ActionNode
 
             if (path.Count > 2)
             {
-                float direction = path[1].X - path[0].X;
+                float direction = path[1].x - path[0].x;
 
                 if (direction != 0)
                     movementDirection = direction / Mathf.Abs(direction);
@@ -71,11 +69,11 @@ public class PathFindingNode : ActionNode
                 
                 if(graph.Count > 0)
                 {
-                    if (((!Physics.Raycast(ray, distance)) && graph[0].transform.position.y > enemy.transform.position.y) || path[2].Y - path[0].Y > 1)
+                    if (((!Physics.Raycast(ray, distance)) && graph[0].transform.position.y > enemy.transform.position.y) || path[2].y - path[0].y > 1)
                         enemy.Jump();
                 }else
                 {
-                    if (path[2].Y - path[0].Y > 1 || (!Physics.Raycast(ray, distance)))
+                    if (path[2].y - path[0].y > 1 || (!Physics.Raycast(ray, distance)))
                         enemy.Jump();
                 }
             }
@@ -88,19 +86,11 @@ public class PathFindingNode : ActionNode
         return State.RUNNING;
     }
 
-    private List<PathNode> FindPathAStar()
+    private List<Vector3> FindPathAStar()
     {
-        List<PathNode> path;
-        pathFinding.GetGrid().GetXY(enemy.transform.position - new Vector3(0f, 1f, 0f), out int xStart, out int yStart);
-
-        int xEnd, yEnd;
-
         if (graph.Count > 0)
-            pathFinding.GetGrid().GetXY(graph[0].transform.position - new Vector3(0f, 1f, 0f), out xEnd, out yEnd);
+            return PathFinding.Instance().FindPath(enemy.transform.position, graph[0].transform.position);
         else
-            pathFinding.GetGrid().GetXY(enemy.player.transform.position - new Vector3(0f, 1f, 0f), out xEnd, out yEnd);
-
-        path = pathFinding.FindPath(xStart, yStart, xEnd, yEnd);
-        return path;
+            return PathFinding.Instance().FindPath(enemy.transform.position, enemy.player.transform.position);
     }
 }

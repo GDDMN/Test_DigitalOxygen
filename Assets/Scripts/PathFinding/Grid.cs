@@ -21,6 +21,8 @@ public class Grid <TGridObject>
     public int GetWidth => _width;
     public int GetHeight => _height;
 
+    public float GetCellSize => _cellSize;
+
     public Grid(int width, int height, float cellSize, Vector3 origiPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject)
     {
         _width = width;

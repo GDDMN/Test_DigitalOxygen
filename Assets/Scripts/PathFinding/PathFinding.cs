@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PathFinding 
+public class PathFinding
 {
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 12;
 
+    private const int WIDTH = 34;
+    private const int HEIGHT = 30;
+
     private Grid<PathNode> grid;
     private List<PathNode> openList;
     private List<PathNode> closedList;
-        
 
-    public PathFinding(int width, int height, Tilemap tilemap)
+    private static PathFinding instance;
+    
+    public static PathFinding Instance()
     {
-        grid = new Grid<PathNode>(width, height, 1.0f, new Vector3(-11, -.5f),
+        if (instance == null)
+            instance = new PathFinding();
+
+        return instance;
+    }
+
+    public PathFinding()
+    {
+        Tilemap tilemap = GameObject.FindObjectOfType<Tilemap>();
+        grid = new Grid<PathNode>(WIDTH, HEIGHT, 1.0f, new Vector3(-11, -.5f),
             (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 
         Transform[] tilepositions = tilemap.gameObject.GetComponentsInChildren<Transform>();
@@ -24,7 +37,7 @@ public class PathFinding
         {
             grid.GetXY(tile.position, out int x , out int y);
             
-            if(x < width && x > 0 && y > 0 && y < height)
+            if(x < WIDTH && x > 0 && y > 0 && y < HEIGHT)
                 grid.GetGridObject(x, y-1).isWalkable = false;
         }
     }
@@ -34,6 +47,27 @@ public class PathFinding
         return grid;
     }
 
+    public List<Vector3> FindPath(Vector3 startWorldPos, Vector3 endWorldPos)
+    {
+        grid.GetXY(startWorldPos, out int startX, out int startY);
+        grid.GetXY(endWorldPos, out int endX, out int endY);
+
+        List<PathNode> path = FindPath(startX, startY, endX, endY);
+        if(path == null)
+        {
+            return null;
+        }
+        else
+        {
+            List<Vector3> vectorPath = new List<Vector3>();
+            foreach(PathNode node in path)
+            {
+                vectorPath.Add(new Vector3(node.X, node.Y) * grid.GetCellSize + Vector3.one * grid.GetCellSize * .5f);
+            }
+            return vectorPath;
+        }
+
+    }
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
         PathNode startNode = grid.GetGridObject(startX, startY);
