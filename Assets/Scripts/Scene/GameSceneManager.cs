@@ -31,6 +31,7 @@ public class GameSceneManager : MonoBehaviour
 
     private void Win()
     {
+        player.GameStarted = false;
         looseWinWindow.SetActive(true);
         win.gameObject.SetActive(true);
     }

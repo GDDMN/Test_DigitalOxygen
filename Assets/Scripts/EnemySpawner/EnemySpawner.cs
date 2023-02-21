@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public void Instant(EnemyController enemy)
     {
         spawnEffect.Play();
+        spawnEffect.GetComponent<AudioSource>().Play();
         this.enemy = Instantiate(enemy, transform.position, Quaternion.identity);
         this.enemy.OnDeath += ClearEnemyField;
     }

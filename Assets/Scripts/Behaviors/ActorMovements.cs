@@ -38,7 +38,9 @@ public class ActorMovements : MonoBehaviour
     public void Run(float direction)
     {
         Vector3 startPosition = _actorObject.position;
-        _actorObject.position = startPosition + new Vector3(direction, 0.0f, 0.0f) * _walkSpeed * Time.deltaTime;
+
+        float xPos = Mathf.Clamp(startPosition.x + direction *_walkSpeed * Time.deltaTime, -11.0f, 21.0f);
+        _actorObject.position = new Vector3(xPos, startPosition.y, startPosition.z);
         Rotate(direction);
  
         _animationController.SetFloat("Run", Mathf.Abs(direction));
