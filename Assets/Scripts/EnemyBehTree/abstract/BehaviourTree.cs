@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-//using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu()]
@@ -39,19 +39,19 @@ public class BehaviourTree : ScriptableObject
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
         node.name = type.Name;
-        //node.guid = GUID.Generate().ToString();
+        node.guid = GUID.Generate().ToString();
 
         nodes.Add(node);
-        //AssetDatabase.AddObjectToAsset(node, this);
-        //AssetDatabase.SaveAssets();
+        AssetDatabase.AddObjectToAsset(node, this);
+        AssetDatabase.SaveAssets();
         return node;
     }
 
     public void DeleteNode(Node node)
     {
         nodes.Remove(node);
-        //AssetDatabase.RemoveObjectFromAsset(node);
-        //AssetDatabase.SaveAssets();
+        AssetDatabase.RemoveObjectFromAsset(node);
+        AssetDatabase.SaveAssets();
     }
 
     public void AddChild(Node parent, Node child)
