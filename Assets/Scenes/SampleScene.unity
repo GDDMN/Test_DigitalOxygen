@@ -1446,6 +1446,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8258632, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19861264, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19900994, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -7905,6 +7913,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8258632, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19861264, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19900994, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -11716,7 +11732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: _damage
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7639803469474091441, guid: d254c50634b721f4cb2aedeaf5e132fc, type: 3}
       propertyPath: _attackRange
@@ -13174,6 +13190,14 @@ PrefabInstance:
     - target: {fileID: 8258632, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258632, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19861264, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19900994, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
       propertyPath: m_Materials.Array.size
