@@ -2550,8 +2550,8 @@ MonoBehaviour:
     m_Bits: 1024
   _damage: 0.1
   _stamina: 0
-  _punchFatigue: 0
-  _punchRecovery: 0
+  _punchFatigue: 0.2
+  _punchRecovery: 0.2
 --- !u!114 &2428545954061975965
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,9 @@ public class ActorAttack : MonoBehaviour
     {
         if (_stamina > 0.0f)
         {
-            OnStaminaChanges.Invoke();
+            if(OnStaminaChanges != null)
+                OnStaminaChanges.Invoke();
+
             _stamina -= _punchRecovery * Time.deltaTime;
         }
     }

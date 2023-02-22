@@ -2445,8 +2445,8 @@ MonoBehaviour:
     m_Bits: 1024
   _damage: 0.1
   _stamina: 0
-  _punchFatigue: 0
-  _punchRecovery: 0
+  _punchFatigue: 0.2
+  _punchRecovery: 0.2
 --- !u!1001 &7594442869687000905
 PrefabInstance:
   m_ObjectHideFlags: 0
